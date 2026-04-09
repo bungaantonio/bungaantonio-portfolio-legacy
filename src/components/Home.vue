@@ -76,9 +76,4 @@ export default {
 .photo img:hover {
   transform: scale(1.05);  /* Efeito de zoom ao passar o mouse */
 }
-
-/* Para melhorar a responsividade e o feedback visual, pode-se adicionar uma transição suave ao carregar */
-.main {
-  transition: opacity 0.5s ease-in-out;
-}
 </style>

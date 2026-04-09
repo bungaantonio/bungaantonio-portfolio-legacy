@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import App from '../App.vue';
 import BlogIndex from '../components/BlogIndex.vue';
 import BlogPost from '../components/BlogPost.vue';
 import Home from '../components/Home.vue'; // Importe o componente Home
@@ -26,6 +25,13 @@ const routes = [
 const router = createRouter({
     history: createWebHistory(),
     routes,
+    scrollBehavior(_to, _from, savedPosition) {
+        if (savedPosition) {
+            return savedPosition;
+        }
+
+        return { top: 0 };
+    },
 });
 
 export default router;

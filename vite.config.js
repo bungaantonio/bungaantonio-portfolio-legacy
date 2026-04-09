@@ -5,4 +5,8 @@ import vue from '@vitejs/plugin-vue'
 export default defineConfig({
   plugins: [vue()],
   assetsInclude: ['**/*.md'],
+  test: {
+    environment: 'jsdom',
+    setupFiles: './vitest.setup.js',
+  },
 })

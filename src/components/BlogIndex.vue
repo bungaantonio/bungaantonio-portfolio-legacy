@@ -4,7 +4,7 @@
 
     <!-- Se houver erro ao carregar os posts -->
     <div v-if="hasError" class="text-center p-4">
-      <p>Ocorreu um erro ao carregar os posts. Por favor, tente novamente mais tarde.</p>
+      <p>{{ errorMessage }}</p>
     </div>
 
     <!-- Se os posts ainda não foram carregados -->
@@ -76,6 +76,7 @@ export default {
       currentPage: 1,
       postsPerPage: 5,
       hasError: false,
+      errorMessage: 'Ocorreu um erro ao carregar os posts. Por favor, tente novamente mais tarde.',
     };
   },
   computed: {
@@ -95,15 +96,14 @@ export default {
     async loadPosts() {
       try {
         const rawPosts = await PostService.loadPosts();
-        this.posts = rawPosts.map(post => ({
-          ...post,
-          formattedDate: this.formatDate(post.date),
-        }));
-        this.postsLoaded = true;
+        this.posts = rawPosts;
         this.hasError = false;
       } catch (error) {
         console.error('Erro ao carregar posts:', error);
+        this.posts = [];
         this.hasError = true;
+      } finally {
+        this.postsLoaded = true;
       }
     },
     formatDate(dateString) {
@@ -111,7 +111,9 @@ export default {
     },
     changePage(page) {
       this.currentPage = page;
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (typeof window !== 'undefined' && typeof window.scrollTo === 'function') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
     },
   },
 };
@@ -137,8 +139,4 @@ export default {
   }
 }
 
-/* Melhorias de acessibilidade */
-.btn {
-  @apply px-4 py-2 bg-gray-200 rounded-md hover:bg-gray-300 transition duration-300 flex items-center justify-center;
-}
 </style>

@@ -1,49 +1,99 @@
-# BungaAntonio.tech
+# Bunga António Portfolio
 
-Bem-vindo ao meu repositório **bungaantonio-portfolio**! Este é o meu portfólio pessoal online, onde compartilho minha jornada como desenvolvedor de software e engenheiro informático.
+Portfólio pessoal e blog técnico construído com Vue 3, Vite e Tailwind CSS.
 
-## Descrição
+O projeto tem dois objetivos principais:
 
-O **bungaantonio.tech** é uma página pessoal que visa comunicar minha experiência, habilidades e trajetória profissional de forma clara, visualmente envolvente e com foco em **storytelling**. Este portfólio foi criado para mostrar meu trabalho, minha paixão por tecnologia e os projetos que desenvolvi ao longo da minha carreira.
+- apresentar o perfil profissional do Bunga António;
+- publicar artigos técnicos em Markdown com navegação simples e leitura agradável.
 
-## Sobre
+## Stack
 
-- **Tecnologias usadas**: HTML5, CSS3, JavaScript, Vue.js, Tailwind CSS, Vite.
-- **Objetivo**: Mostrar minha trajetória, habilidades e facilitar o contato com profissionais da área de tecnologia e possíveis colaboradores.
+- Vue 3
+- Vue Router
+- Vite
+- Tailwind CSS
+- Marked + front-matter
+- DOMPurify
+- Vitest + Vue Test Utils
 
-## Funcionalidades
+## O que existe hoje
 
-- **Timeline Interativa**: Uma linha do tempo visual que mostra minha evolução e marcos importantes na minha carreira, desde o início com a programação até os dias atuais.
-- **Design Responsivo**: O layout é adaptável a diferentes dispositivos, como smartphones, tablets e desktops.
-- **Contato Direto**: Links para as minhas redes sociais (LinkedIn, GitHub, Twitter), permitindo que você entre em contato comigo facilmente.
+- página inicial com apresentação pessoal;
+- secção de blog com paginação;
+- posts em Markdown com `front-matter`;
+- navegação entre posts mais recentes e mais antigos;
+- sanitização do HTML gerado a partir do Markdown;
+- testes automatizados para serviço e componentes críticos.
 
-## Como rodar localmente
+## Estrutura do projeto
 
-1. Clone este repositório para sua máquina local:
+```text
+src/
+  blogs-posts/        Conteúdo dos artigos em Markdown
+  components/         Componentes Vue
+  router/             Configuração de rotas
+  services/           Camada de parsing e utilitários
+public/               Assets públicos
+```
 
-   ```bash
-   git clone https://github.com/seu-usuario/bungaantonio.tech.git
-   ```
+## Requisitos
 
-2. Navegue até o diretório do projeto:
+- Node.js 20+ recomendado
+- npm 10+
 
-      ```bash
-   git clone https://github.com/seu-usuario/bungaantonio.tech.git
-   ```
+## Como executar
 
-3. Instale as dependências:
+1. Instale as dependências:
 
-   ```bash
-   git clone https://github.com/seu-usuario/bungaantonio.tech.git
-   ```
+```bash
+npm install
+```
 
-4. Inicie o servidor de desenvolvimento:
+2. Inicie o servidor de desenvolvimento:
 
-   ```bash
-   git clone https://github.com/seu-usuario/bungaantonio.tech.git
-   ```
+```bash
+npm run dev
+```
 
-5. Abra o navegador e acesse `http://localhost:3000` para ver o projeto em execução.
+3. Gere a build de produção:
 
-___
-"Start-ups crescem em ambientes de forte colaboração e disrupção" - Bunga António
+```bash
+npm run build
+```
+
+4. Execute os testes:
+
+```bash
+npm test
+```
+
+## Como criar um novo post
+
+Adicione um ficheiro `.md` em `src/blogs-posts/` com este formato:
+
+```md
+---
+title: Título do artigo
+description: Resumo curto do artigo
+tags: [tag-1, tag-2]
+date: 2026-04-09
+---
+
+Conteúdo em Markdown.
+```
+
+O nome do ficheiro passa a ser o `slug` do post.
+
+## Notas de manutenção
+
+- Os posts são carregados localmente via `import.meta.glob`.
+- O HTML resultante do Markdown é sanitizado antes de ser renderizado.
+- O projeto usa `createWebHistory`, então o deploy precisa de fallback para `index.html` em rotas como `/blog/slug`.
+
+## Qualidade e robustez
+
+- Erros de carregamento do blog são tratados na interface.
+- Datas inválidas recebem fallback visível.
+- A navegação faz reset de scroll entre páginas.
+- O projeto está padronizado em `npm` com `package-lock.json`.
