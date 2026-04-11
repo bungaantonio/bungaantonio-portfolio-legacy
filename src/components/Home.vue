@@ -2,37 +2,56 @@
     <main class="w-full section-spacing">
         <div class="container mx-auto px-4 sm:px-6">
             <div class="max-w-4xl mx-auto component-spacing">
-                <section class="intro flex flex-col md:flex-row items-center mt-12">
-                    <!-- Texto de introdução -->
-                    <section class="md:w-3/5 md:pr-8">
-                        <h1 class="text-title mb-4">Bem-vindo ao meu portfólio!</h1>
-                        <p class="mb-4 text-body">
-                            Sou um entusiasta da tecnologia e do impacto social, com experiência em engenharia
-                            informática, gestão de produtos e desenvolvimento de software.
+                <section class="intro flex flex-col md:flex-row items-start mt-12 gap-10">
+
+                    <!-- Coluna de Conteúdo -->
+                    <section class="md:w-3/5">
+                        <h1 class="text-title mb-6">Bem-vindo ao meu portfólio.</h1>
+
+                        <p class="mb-4 text-body leading-relaxed">
+                            Atuo na intersecção entre desenvolvimento, operação e arquitetura. Minha prática é
+                            pautada pela <span class="text-secondary-900 dark:text-white font-medium">consistência em
+                                produção</span> e pela responsabilidade técnica em sistemas de elevado impacto.
                         </p>
+
+                        <p class="text-body leading-relaxed mb-8">
+                            Tenho interesse especial por sistemas organizacionais e de elevado fluxo, onde regras,
+                            integração e clareza operacional precisam funcionar em ambiente real.
+                        </p>
+
+                        <!-- System Grid: Especialidades -->
+                        <div class="mt-5">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                <article v-for="item in domains" :key="item.title" class="system-grid__card group">
+                                    <h3 class="system-grid__card-title">{{ item.title }}</h3>
+                                </article>
+                            </div>
+                        </div>
                     </section>
 
-                    <!-- Foto -->
-                    <section class="photo md:w-2/5">
-                        <p class="image">
-                            <img alt="Bunga António, engenheiro de software e entusiasta de tecnologia, posando na Faculdade de Engenharia UAN"
-                                src="/bungaantonio-brand.jpeg" class="rounded-lg shadow-md" loading="lazy" width="500"
-                                height="500" />
-                        </p>
-                        <p class="credit text-sm text-muted">Foto: Faculdade de Engenharia UAN</p>
-                        <p class="mf-name text-xl font-bold mt-2 text-secondary">Bunga António</p>
-                    </section>
+                    <!-- Coluna de Perfil -->
+                    <aside class="photo md:w-2/5 w-full flex flex-col items-center md:items-end">
+                        <div class="image-container relative">
+                            <img alt="Bunga António, engenheiro de software e sistemas" src="/bungaantonio-brand.jpeg"
+                                class="rounded-lg shadow-lg border border-secondary-200 dark:border-secondary-700 object-cover"
+                                loading="lazy" width="400" height="400" />
+                            <div class="profile-caption">
+                                <p class="mf-name">bunga.antonio</p>
+                                <p class="credit">FEUAN • 2024/2025</p>
+                            </div>
+                        </div>
+                    </aside>
                 </section>
 
-                <div class="mt-12 text-center">
+                <!-- Footer / CTA -->
+                <div class="mt-16 pt-8 border-t border-accent dark:border-secondary-800 text-center">
                     <p class="text-body text-lg">
                         Veja meus
-                        <router-link to="/blog" class="link" aria-label="Ver últimos artigos">últimos
-                            artigos</router-link>
+                        <router-link to="/blog" class="link font-semibold mx-1">artigos técnicos</router-link>
                         ou
                         <a href="https://www.linkedin.com/in/bungaantonio" target="_blank" rel="noopener noreferrer"
-                            class="link" aria-label="Entrar em contato no LinkedIn">
-                            entre em contato
+                            class="link font-semibold mx-1">
+                            conecte-se comigo
                         </a>.
                     </p>
                 </div>
@@ -41,34 +60,54 @@
     </main>
 </template>
 
-<script>
-export default {
-    // Não há necessidade de dados ou métodos adicionais aqui
-};
+<script setup>
+const domains = [
+    { title: 'IAM & Identidade' },
+    { title: 'Rastreabilidade & Auditoria' },
+    { title: 'Processos & Regras de Negócio' },
+    { title: 'Infra & Integração' },
+];
 </script>
 
 <style scoped>
-/* Transições suaves para links */
-.link:hover {
-    transition: color 0.3s ease;
-    color: theme('colors.primary.hover');
-}
-
-/* Para melhorar a responsividade da imagem */
 .photo img {
     max-width: 100%;
-    /* Garante que a imagem nunca ultrapasse a largura da tela */
     height: auto;
-    /* Mantém a proporção da imagem */
-    display: block;
-    /* Remove o espaço abaixo da imagem */
-    margin: 0 auto;
-    /* Centraliza a imagem */
-    transition: transform 0.3s ease-in-out;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .photo img:hover {
-    transform: scale(1.05);
-    /* Efeito de zoom ao passar o mouse */
+    transform: translateY(-4px);
+    @apply shadow-xl;
+}
+
+.profile-caption {
+    @apply absolute inset-x-3 bottom-3 rounded-xl border border-white/20 bg-white/88 px-4 py-2 text-left shadow-sm backdrop-blur-sm dark:border-secondary-600 dark:bg-secondary-900/88;
+}
+
+.mf-name {
+    @apply text-sm font-bold tracking-wide text-secondary-900 dark:text-white;
+}
+
+.credit {
+    @apply mt-1 text-[10px] uppercase tracking-[0.18em] text-secondary-500 dark:text-secondary-300;
+}
+
+.system-grid__card {
+    @apply rounded-xl border border-secondary-200 bg-secondary-50/50 px-4 py-4 transition-all duration-300 ease-in-out hover:border-primary-400 hover:bg-white hover:shadow-md dark:border-secondary-700 dark:bg-secondary-800/50 dark:hover:border-primary-500 dark:hover:bg-secondary-800;
+}
+
+.system-grid__card-title {
+    @apply text-[13px] font-bold leading-tight uppercase tracking-wide text-secondary-700 dark:text-secondary-200;
+}
+
+/* Ajuste sutil para os links não "pularem" no hover */
+.link {
+    @apply border-b border-transparent transition-all duration-300;
+}
+
+.link:hover {
+    color: theme('colors.primary.DEFAULT');
+    @apply border-primary-500;
 }
 </style>

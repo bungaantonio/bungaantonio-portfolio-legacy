@@ -170,7 +170,7 @@ import ReadingProgress from './ReadingProgress.vue';
           return;
         }
 
-        const defaultTitle = 'Bunga António @ Software & Systems Engineer';
+        const defaultTitle = 'Bunga António @ Software & System Engineer';
         const defaultDescription = 'Bem-vindo ao portfólio de Bunga António, engenheiro de software e entusiasta de tecnologia, onde compartilho meus artigos e experiências.';
         const metaDescription = document.querySelector('meta[name="description"]');
 
