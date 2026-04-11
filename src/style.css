@@ -1,3 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .card {
+    @apply bg-card-bg p-4 md:p-6 rounded-lg shadow hover:shadow-md transition duration-300;
+  }
+
+  .btn {
+    @apply px-4 py-2 bg-primary text-white rounded hover:bg-primary-hover transition duration-300;
+  }
+
+  .link {
+    @apply text-primary hover:text-primary-hover hover:underline;
+  }
+
+  .text-title {
+    @apply text-3xl font-bold;
+  }
+
+  .text-body {
+    @apply text-secondary;
+  }
+}

@@ -1,6 +1,6 @@
 <template>
   <div class="container mx-auto px-4">
-    <h1 class="text-3xl font-bold mb-6">Blog</h1>
+    <h1 class="text-title mb-6">Blog</h1>
 
     <!-- Se houver erro ao carregar os posts -->
     <div v-if="hasError" class="text-center p-4">
@@ -15,28 +15,27 @@
 
     <!-- Se houver posts carregados -->
     <div v-else>
-      <!-- Se houver posts para mostrar -->
       <div v-if="displayedPosts.length > 0" class="space-y-4 md:space-y-6">
         <div
           v-for="post in displayedPosts"
           :key="post.id"
-          class="bg-white p-4 md:p-6 rounded-lg shadow hover:shadow-md transition duration-300"
+          class="card"
         >
           <article>
             <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-2">
               <router-link
                 :to="`/blog/${post.id}`"
-                class="text-blue-600 hover:underline text-lg md:text-xl font-medium mb-1 md:mb-0"
+                class="link text-lg md:text-xl font-medium mb-1 md:mb-0"
               >
                 {{ post.title }}
               </router-link>
-              <span class="text-gray-500 text-sm">Publicado em: {{ post.formattedDate }}</span>
+              <span class="text-muted text-sm">Publicado em: {{ post.formattedDate }}</span>
             </div>
-            <p class="text-gray-700">
+            <p class="text-body">
               {{ post.excerpt }}
               <router-link
                 :to="`/blog/${post.id}`"
-                class="text-blue-600 hover:underline font-semibold"
+                class="link font-semibold"
               >
                 Ler mais
               </router-link>

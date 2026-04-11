@@ -15,14 +15,13 @@
         Anterior
       </button>
   
-      <!-- Botões de páginas -->
       <button
         v-for="page in totalPages"
         :key="page"
         @click="changePage(page)"
         :class="[
           'btn',
-          { 'bg-blue-500 text-white hover:bg-blue-600 pointer-events-none': page === currentPage }
+          { 'bg-primary text-white hover:bg-primary-hover pointer-events-none': page === currentPage }
         ]"
         :aria-current="page === currentPage ? 'page' : null"
         :aria-disabled="page === currentPage"

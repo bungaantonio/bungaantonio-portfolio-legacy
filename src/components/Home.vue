@@ -5,8 +5,8 @@
                 <section class="intro flex flex-col md:flex-row items-center mt-12">
                     <!-- Texto de introdução -->
                     <section class="md:w-3/5 md:pr-8">
-                        <h1 class="text-3xl font-bold mb-4">Bem-vindo ao meu portfólio!</h1>
-                        <p class="mb-4">
+                        <h1 class="text-title mb-4">Bem-vindo ao meu portfólio!</h1>
+                        <p class="mb-4 text-body">
                             Sou um entusiasta da tecnologia e do impacto social, com experiência em engenharia
                             informática, gestão de produtos e desenvolvimento de software.
                         </p>
@@ -24,22 +24,21 @@
                                 height="500"   
                             />
                         </p>
-                        <p class="credit text-sm text-gray-600">Foto: Faculdade de Engenharia UAN</p>
-                        <p class="mf-name text-xl font-bold mt-2">Bunga António</p>
+                        <p class="credit text-sm text-muted">Foto: Faculdade de Engenharia UAN</p>
+                        <p class="mf-name text-xl font-bold mt-2 text-secondary">Bunga António</p>
                     </section>
                 </section>
   
-                <!-- Links para blog e contato -->
                 <div class="mt-12 text-center">
-                    <p class="text-gray-700 text-lg">
+                    <p class="text-body text-lg">
                         Veja meus
-                        <router-link to="/blog" class="text-blue-600 hover:underline" aria-label="Ver últimos artigos">últimos artigos</router-link>
+                        <router-link to="/blog" class="link" aria-label="Ver últimos artigos">últimos artigos</router-link>
                         ou
                         <a 
                             href="https://www.linkedin.com/in/bungaantonio" 
                             target="_blank" 
                             rel="noopener noreferrer"
-                            class="text-blue-600 hover:underline"
+                            class="link"
                             aria-label="Entrar em contato no LinkedIn"
                         >
                             entre em contato
@@ -59,9 +58,9 @@ export default {
 
 <style scoped>
 /* Transições suaves para links */
-.text-blue-600:hover {
+.link:hover {
   transition: color 0.3s ease;
-  color: #1e40af;
+  color: theme('colors.primary-hover');
 }
 
 /* Para melhorar a responsividade da imagem */

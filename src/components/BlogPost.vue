@@ -1,25 +1,25 @@
 <template>
     <div v-if="postLoaded">
-      <div v-if="hasError" class="bg-white p-8 rounded-lg shadow-md">
+      <div v-if="hasError" class="card">
         <p class="mb-4">{{ errorMessage }}</p>
-        <router-link to="/blog" class="text-blue-600 hover:underline">Voltar para o Blog</router-link>
+        <router-link to="/blog" class="link">Voltar para o Blog</router-link>
       </div>
 
       <!-- Post encontrado -->
-      <div v-else-if="postContent && post" class="bg-white p-8 rounded-lg shadow-md">
+      <div v-else-if="postContent && post" class="card">
         <div class="flex items-center justify-between mb-6">
-          <router-link to="/blog" class="text-blue-600 hover:underline">
+          <router-link to="/blog" class="link">
             &larr; Voltar para o Blog
           </router-link>
-          <span class="text-gray-500 text-sm">Publicado em: {{ formatDate(post.date) }}</span>
+          <span class="text-muted text-sm">Publicado em: {{ formatDate(post.date) }}</span>
         </div>
   
-        <h1 class="text-3xl font-bold mb-4">{{ post.title }}</h1>
-        <p class="text-gray-600 mb-4">{{ post.description }}</p>
+        <h1 class="text-title mb-4">{{ post.title }}</h1>
+        <p class="text-secondary mb-4">{{ post.description }}</p>
   
         <div v-if="post.tags.length" class="mb-6">
           <span v-for="tag in post.tags" :key="tag"
-            class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+            class="inline-block bg-accent rounded-full px-3 py-1 text-sm font-semibold text-secondary mr-2 mb-2">
             {{ tag }}
           </span>
         </div>
@@ -33,7 +33,7 @@
       <!-- Post não encontrado -->
       <div v-else>
         <p>Post não encontrado. 
-          <router-link to="/blog" class="text-blue-600 hover:underline">Voltar para o Blog</router-link>
+          <router-link to="/blog" class="link">Voltar para o Blog</router-link>
         </p>
       </div>
     </div>

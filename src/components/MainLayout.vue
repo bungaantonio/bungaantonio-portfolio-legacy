@@ -1,5 +1,5 @@
 <template>
-    <div class="min-h-screen bg-gray-100 flex flex-col">
+    <div class="min-h-screen bg-accent flex flex-col">
         <TopBarComponent />
         <div class="container mx-auto px-6 py-12 min-h-[600px] flex-grow">
             <slot />

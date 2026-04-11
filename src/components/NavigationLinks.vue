@@ -1,10 +1,9 @@
 <template>
     <div class="flex justify-between items-center mt-8 flex-wrap gap-4">
-      <!-- Post anterior -->
       <router-link 
         v-if="previousPost" 
         :to="`/blog/${previousPost.id}`" 
-        class="text-blue-600 hover:underline w-full md:w-auto overflow-hidden text-ellipsis whitespace-nowrap"
+        class="link w-full md:w-auto overflow-hidden text-ellipsis whitespace-nowrap"
         :aria-label="`Leia o post mais recente: ${previousPost.title}`"
       >
         &larr; Mais recente - {{ previousPost.title }}
@@ -14,7 +13,7 @@
       <router-link 
         v-if="nextPost" 
         :to="`/blog/${nextPost.id}`" 
-        class="text-blue-600 hover:underline w-full md:w-auto overflow-hidden text-ellipsis whitespace-nowrap"
+        class="link w-full md:w-auto overflow-hidden text-ellipsis whitespace-nowrap"
         :aria-label="`Leia o post mais antigo: ${nextPost.title}`"
       >
         {{ nextPost.title }} - Mais antigo &rarr;
