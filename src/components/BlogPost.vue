@@ -157,34 +157,79 @@ import ReadingProgress from './ReadingProgress.vue';
         codeBlocks.forEach((pre) => {
           if (pre.dataset.copyButtonAttached) return;
           pre.dataset.copyButtonAttached = 'true';
-          pre.classList.add('code-copy-wrapper');
+
+          const codeElement = pre.querySelector('code');
+          const wrapper = document.createElement('div');
+          wrapper.className = 'code-copy-wrapper';
+          const toolbar = document.createElement('div');
+          toolbar.className = 'code-copy-toolbar';
+
+          const languageLabel = document.createElement('span');
+          languageLabel.className = 'code-copy-language';
+          languageLabel.textContent = this.getCodeLanguage(codeElement);
 
           const button = document.createElement('button');
           button.type = 'button';
           button.className = 'code-copy-btn';
-          button.textContent = 'Copy';
+          button.textContent = 'Copiar';
           button.setAttribute('aria-label', 'Copiar código');
 
           button.addEventListener('click', async () => {
-            const codeElement = pre.querySelector('code');
             if (!codeElement) return;
             try {
-              await navigator.clipboard.writeText(codeElement.innerText.trim());
+              await this.copyCodeToClipboard(codeElement.innerText.trim());
               button.textContent = 'Copiado!';
               setTimeout(() => {
-                button.textContent = 'Copy';
+                button.textContent = 'Copiar';
               }, 1500);
             } catch (error) {
               console.error('Erro ao copiar código:', error);
               button.textContent = 'Erro';
               setTimeout(() => {
-                button.textContent = 'Copy';
+                button.textContent = 'Copiar';
               }, 1500);
             }
           });
 
-          pre.insertBefore(button, pre.firstChild);
+          toolbar.appendChild(languageLabel);
+          toolbar.appendChild(button);
+          pre.parentNode?.insertBefore(wrapper, pre);
+          wrapper.appendChild(toolbar);
+          wrapper.appendChild(pre);
         });
+      },
+      getCodeLanguage(codeElement) {
+        const className = codeElement?.className || '';
+        const languageClass = className
+          .split(' ')
+          .find((entry) => entry.startsWith('language-'));
+
+        if (!languageClass) {
+          return 'Snippet';
+        }
+
+        return languageClass.replace('language-', '').toUpperCase();
+      },
+      async copyCodeToClipboard(text) {
+        if (navigator?.clipboard?.writeText) {
+          await navigator.clipboard.writeText(text);
+          return;
+        }
+
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.setAttribute('readonly', '');
+        textarea.style.position = 'absolute';
+        textarea.style.left = '-9999px';
+        document.body.appendChild(textarea);
+        textarea.select();
+
+        const copied = document.execCommand('copy');
+        document.body.removeChild(textarea);
+
+        if (!copied) {
+          throw new Error('Clipboard API indisponível');
+        }
       },
       formatDate(dateString) {
         return PostService.formatDate(dateString);

@@ -1,5 +1,5 @@
 <template>
-    <header id="banner" class="bg-card-bg dark:bg-card-bg-dark shadow-md sticky top-0 z-10 border-b border-secondary-200 dark:border-secondary-700 transition-colors duration-400">
+    <header id="banner" class="fixed inset-x-0 top-0 z-50 bg-card-bg/95 dark:bg-card-bg-dark/95 shadow-md border-b border-secondary-200 dark:border-secondary-700 transition-colors duration-400 backdrop-blur">
         <div class="container mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
             <div class="flex items-center space-x-4">
                 <router-link to="/" class="flex items-center" aria-label="Página inicial">
