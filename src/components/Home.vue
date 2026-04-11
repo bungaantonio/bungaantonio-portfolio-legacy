@@ -82,15 +82,15 @@ const domains = [
 }
 
 .profile-caption {
-    @apply absolute bottom-3 left-3 rounded-md bg-secondary-900/70 px-3 py-1.5 text-left backdrop-blur-sm;
+    @apply absolute bottom-3 left-3 rounded-lg border border-white/10 bg-secondary-900/60 px-3 py-2 text-left shadow-lg backdrop-blur-md;
 }
 
 .mf-name {
-    @apply text-xs font-semibold tracking-[0.14em] text-white/95;
+    @apply text-xs font-semibold tracking-[0.16em] text-white/95;
 }
 
 .credit {
-    @apply mt-0.5 text-[9px] uppercase tracking-[0.18em] text-white/70;
+    @apply mt-1 text-[9px] uppercase tracking-[0.22em] text-white/60;
 }
 
 .system-grid__card {
