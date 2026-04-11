@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { PostService, formatDate, getExcerpt, normalizeTags } from './PostService';
 
 const mockModules = {
-    '../blogs-posts/older-post.md': `---
+    '../blogs-posts/older-post/index.md': `---
 title: Older Post
 description: Post mais antigo para validar ordenação.
 tags: [legacy]
@@ -10,7 +10,7 @@ date: 2024-01-01
 ---
 
 Conteúdo antigo`,
-    '../blogs-posts/newer-post.md': `---
+    '../blogs-posts/newer-post/index.md': `---
 title: Newer Post
 description: Post mais recente para validar ordenação.
 tags: [release, update]
@@ -52,5 +52,16 @@ describe('PostService', () => {
             tags: ['release', 'update'],
         });
         await expect(service.getPost('missing-post')).resolves.toBeNull();
+    });
+
+    it('resolve assets relativos a partir da pasta do post', () => {
+        const service = new PostService(mockModules, {
+            '../blogs-posts/newer-post/capa.png': '/assets/capa.png',
+            '../blogs-posts/newer-post/imagem com espaco.png': '/assets/imagem-com-espaco.png',
+        });
+
+        expect(service.resolveAssetPath({ sourceDir: '../blogs-posts/newer-post' }, './capa.png')).toBe('/assets/capa.png');
+        expect(service.resolveAssetPath({ sourceDir: '../blogs-posts/newer-post' }, '<./imagem%20com%20espaco.png>')).toBe('/assets/imagem-com-espaco.png');
+        expect(service.resolveAssetPath({ sourceDir: '../blogs-posts/newer-post' }, 'https://example.com/image.png')).toBe('https://example.com/image.png');
     });
 });

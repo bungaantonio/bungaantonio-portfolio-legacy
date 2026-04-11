@@ -8,6 +8,7 @@ vi.mock('../services/PostService', () => ({
         loadPosts: vi.fn(),
         getPost: vi.fn(),
         formatDate: vi.fn((date) => date),
+        resolveAssetPath: vi.fn((_, path) => path),
     },
 }));
 
@@ -16,11 +17,6 @@ describe('BlogPost', () => {
         vi.clearAllMocks();
         document.title = 'Base title';
         document.head.innerHTML = '<meta name="description" content="base description">';
-        Object.assign(navigator, {
-            clipboard: {
-                writeText: vi.fn().mockResolvedValue(),
-            },
-        });
     });
 
     it('sanitiza o html renderizado a partir do markdown', async () => {
@@ -53,20 +49,34 @@ describe('BlogPost', () => {
         await new Promise((resolve) => setTimeout(resolve, 0));
         await wrapper.vm.$nextTick();
 
-        expect(wrapper.html()).toContain('<img src="x">');
+        expect(wrapper.html()).toContain('<img src="x"');
         expect(wrapper.html()).not.toContain('onerror=');
         expect(document.title).toBe('Safe Post | Bunga António');
     });
 
-    it('adiciona uma toolbar com botão de copiar aos blocos de código', async () => {
-        PostService.loadPosts.mockResolvedValueOnce([]);
+    it('abre imagens do post em lightbox com o asset resolvido', async () => {
+        PostService.resolveAssetPath.mockImplementation((_, path) => {
+            if (path.includes('preview')) {
+                return '/assets/qms-preview.jpg';
+            }
+
+            if (path.includes('2025-11-30_135808.png')) {
+                return '/assets/qms-full.png';
+            }
+
+            return path;
+        });
+
+        PostService.loadPosts.mockResolvedValueOnce([
+            { id: 'qms-post', title: 'QMS Post' },
+        ]);
         PostService.getPost.mockResolvedValueOnce({
-            id: 'code-post',
-            title: 'Code Post',
-            description: 'Post com snippet',
-            date: '2025-01-01',
-            tags: ['codigo'],
-            body: '```bash\nnpm run dev\n```',
+            id: 'qms-post',
+            title: 'QMS Post',
+            description: 'Conteúdo com imagem',
+            date: '2026-04-11',
+            tags: ['qms'],
+            body: '[![Imagem QMS](./2025-11-30_135808-preview.jpg)](./2025-11-30_135808.png)',
         });
 
         const wrapper = mount(BlogPost, {
@@ -77,23 +87,23 @@ describe('BlogPost', () => {
                 },
                 mocks: {
                     $route: {
-                        params: { postId: 'code-post' },
+                        params: { postId: 'qms-post' },
                     },
                 },
             },
         });
 
-        const container = document.createElement('div');
-        container.innerHTML = '<pre><code class="language-bash">npm run dev</code></pre>';
+        await new Promise((resolve) => setTimeout(resolve, 0));
+        await wrapper.vm.$nextTick();
 
-        BlogPost.methods.addCopyButtons.call({
-            $refs: { postContent: container },
-            getCodeLanguage: BlogPost.methods.getCodeLanguage,
-            copyCodeToClipboard: BlogPost.methods.copyCodeToClipboard,
-        });
+        const image = wrapper.find('img[alt="Imagem QMS"]');
+        expect(image.exists()).toBe(true);
+        expect(image.attributes('loading')).toBe('lazy');
 
-        expect(container.querySelector('.code-copy-toolbar')).not.toBeNull();
-        expect(container.querySelector('.code-copy-language')?.textContent).toBe('BASH');
-        expect(container.querySelector('.code-copy-btn')?.textContent).toBe('Copiar');
+        await image.trigger('click');
+
+        const lightboxImage = wrapper.find('.lightbox__image');
+        expect(lightboxImage.exists()).toBe(true);
+        expect(lightboxImage.attributes('src')).toBe('/assets/qms-full.png');
     });
 });

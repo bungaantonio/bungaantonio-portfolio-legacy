@@ -26,10 +26,32 @@
             </span>
           </div>
   
-          <div ref="postContent" v-html="postContent" class="prose prose-slate dark:prose-invert max-w-none mb-8"></div>
+          <div
+            ref="postContent"
+            v-html="postContent"
+            class="prose prose-slate dark:prose-invert max-w-none mb-8"
+            @click="handleContentClick"
+          ></div>
   
           <!-- Navegação Próximo/Anterior -->
           <NavigationLinks :previousPost="previousPost" :nextPost="nextPost" />
+        </div>
+
+        <div
+          v-if="lightboxImage"
+          class="lightbox"
+          role="dialog"
+          aria-modal="true"
+          :aria-label="lightboxAlt || 'Imagem ampliada'"
+          @click.self="closeLightbox"
+        >
+          <button type="button" class="lightbox__close" @click="closeLightbox" aria-label="Fechar imagem">
+            Fechar
+          </button>
+          <figure class="lightbox__figure">
+            <img :src="lightboxImage" :alt="lightboxAlt" class="lightbox__image" />
+            <figcaption v-if="lightboxAlt" class="lightbox__caption">{{ lightboxAlt }}</figcaption>
+          </figure>
         </div>
       </div>
   
@@ -69,7 +91,19 @@ import ReadingProgress from './ReadingProgress.vue';
         postLoaded: false,
         hasError: false,
         errorMessage: 'Não foi possível carregar este post.',
+        lightboxImage: null,
+        lightboxAlt: '',
       };
+    },
+    mounted() {
+      if (typeof window !== 'undefined') {
+        window.addEventListener('keydown', this.handleKeydown);
+      }
+    },
+    beforeUnmount() {
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('keydown', this.handleKeydown);
+      }
     },
     watch: {
       '$route.params.postId': {
@@ -79,11 +113,6 @@ import ReadingProgress from './ReadingProgress.vue';
           this.postLoaded = true;
         },
         immediate: true,
-      },
-      postContent() {
-        this.$nextTick(() => {
-          this.addCopyButtons();
-        });
       },
     },
     methods: {
@@ -101,7 +130,8 @@ import ReadingProgress from './ReadingProgress.vue';
               const normalized = type.toLowerCase() === 'dica' ? 'info' : type.toLowerCase();
               return `<blockquote class="callout callout-${normalized}">${content}</blockquote>`;
             });
-            this.postContent = sanitizeHtml(marked.parse(bodyWithCallouts));
+            const parsedHtml = marked.parse(bodyWithCallouts);
+            this.postContent = this.rewriteAssetUrls(sanitizeHtml(parsedHtml), post);
             this.post = post;
             this.setNavigationPosts(postId);
             this.updatePageMetadata(post);
@@ -121,6 +151,7 @@ import ReadingProgress from './ReadingProgress.vue';
         this.postContent = null;
         this.nextPost = null;
         this.previousPost = null;
+        this.closeLightbox();
       },
       setNavigationPosts(postId) {
         const currentIndex = this.allPosts.findIndex(p => p.id === postId);
@@ -149,86 +180,54 @@ import ReadingProgress from './ReadingProgress.vue';
           metaDescription.setAttribute('content', post?.description || defaultDescription);
         }
       },
-      addCopyButtons() {
-        const postContainer = this.$refs.postContent;
-        if (!postContainer) return;
-
-        const codeBlocks = postContainer.querySelectorAll('pre');
-        codeBlocks.forEach((pre) => {
-          if (pre.dataset.copyButtonAttached) return;
-          pre.dataset.copyButtonAttached = 'true';
-
-          const codeElement = pre.querySelector('code');
-          const wrapper = document.createElement('div');
-          wrapper.className = 'code-copy-wrapper';
-          const toolbar = document.createElement('div');
-          toolbar.className = 'code-copy-toolbar';
-
-          const languageLabel = document.createElement('span');
-          languageLabel.className = 'code-copy-language';
-          languageLabel.textContent = this.getCodeLanguage(codeElement);
-
-          const button = document.createElement('button');
-          button.type = 'button';
-          button.className = 'code-copy-btn';
-          button.textContent = 'Copiar';
-          button.setAttribute('aria-label', 'Copiar código');
-
-          button.addEventListener('click', async () => {
-            if (!codeElement) return;
-            try {
-              await this.copyCodeToClipboard(codeElement.innerText.trim());
-              button.textContent = 'Copiado!';
-              setTimeout(() => {
-                button.textContent = 'Copiar';
-              }, 1500);
-            } catch (error) {
-              console.error('Erro ao copiar código:', error);
-              button.textContent = 'Erro';
-              setTimeout(() => {
-                button.textContent = 'Copiar';
-              }, 1500);
-            }
-          });
-
-          toolbar.appendChild(languageLabel);
-          toolbar.appendChild(button);
-          pre.parentNode?.insertBefore(wrapper, pre);
-          wrapper.appendChild(toolbar);
-          wrapper.appendChild(pre);
-        });
-      },
-      getCodeLanguage(codeElement) {
-        const className = codeElement?.className || '';
-        const languageClass = className
-          .split(' ')
-          .find((entry) => entry.startsWith('language-'));
-
-        if (!languageClass) {
-          return 'Snippet';
+      rewriteAssetUrls(html, post) {
+        if (typeof document === 'undefined') {
+          return html;
         }
 
-        return languageClass.replace('language-', '').toUpperCase();
+        const container = document.createElement('div');
+        container.innerHTML = html;
+
+        container.querySelectorAll('img').forEach((image) => {
+          const src = image.getAttribute('src');
+          if (!src) return;
+          image.setAttribute('src', PostService.resolveAssetPath(post, src));
+          image.setAttribute('loading', 'lazy');
+          image.setAttribute('decoding', 'async');
+        });
+
+        container.querySelectorAll('a').forEach((link) => {
+          const href = link.getAttribute('href');
+          if (!href) return;
+          link.setAttribute('href', PostService.resolveAssetPath(post, href));
+        });
+
+        return container.innerHTML;
       },
-      async copyCodeToClipboard(text) {
-        if (navigator?.clipboard?.writeText) {
-          await navigator.clipboard.writeText(text);
+      handleContentClick(event) {
+        const image = event.target.closest('img');
+        if (!image) {
           return;
         }
 
-        const textarea = document.createElement('textarea');
-        textarea.value = text;
-        textarea.setAttribute('readonly', '');
-        textarea.style.position = 'absolute';
-        textarea.style.left = '-9999px';
-        document.body.appendChild(textarea);
-        textarea.select();
+        const link = image.closest('a');
+        const fullImage = link?.getAttribute('href') || image.getAttribute('src');
 
-        const copied = document.execCommand('copy');
-        document.body.removeChild(textarea);
+        if (!fullImage) {
+          return;
+        }
 
-        if (!copied) {
-          throw new Error('Clipboard API indisponível');
+        event.preventDefault();
+        this.lightboxImage = fullImage;
+        this.lightboxAlt = image.getAttribute('alt') || '';
+      },
+      closeLightbox() {
+        this.lightboxImage = null;
+        this.lightboxAlt = '';
+      },
+      handleKeydown(event) {
+        if (event.key === 'Escape' && this.lightboxImage) {
+          this.closeLightbox();
         }
       },
       formatDate(dateString) {
@@ -239,6 +238,24 @@ import ReadingProgress from './ReadingProgress.vue';
   </script>
   
   <style scoped>
-  /* Carregando, mensagens de erro e navegação extraída */
+  .lightbox {
+    @apply fixed inset-0 z-[70] flex items-center justify-center bg-secondary-900/85 p-4 backdrop-blur-sm;
+  }
+
+  .lightbox__close {
+    @apply absolute right-4 top-4 rounded-full bg-white/95 px-4 py-2 text-sm font-semibold text-secondary shadow-sm transition hover:bg-primary hover:text-white dark:bg-secondary-100 dark:text-secondary-900;
+  }
+
+  .lightbox__figure {
+    @apply m-0 flex max-h-full max-w-6xl flex-col items-center gap-3;
+  }
+
+  .lightbox__image {
+    @apply max-h-[85vh] w-auto max-w-full rounded-2xl border border-white/20 shadow-2xl;
+  }
+
+  .lightbox__caption {
+    @apply text-center text-sm text-white/85;
+  }
   </style>
   
