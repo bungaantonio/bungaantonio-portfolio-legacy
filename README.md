@@ -70,7 +70,7 @@ npm test
 
 ## Como criar um novo post
 
-Adicione um ficheiro `.md` em `src/blogs-posts/` com este formato:
+Crie uma pasta para o post em `src/blogs-posts/<slug>/` e adicione um `index.md` com este formato:
 
 ```md
 ---
@@ -83,7 +83,29 @@ date: 2026-04-09
 Conteúdo em Markdown.
 ```
 
-O nome do ficheiro passa a ser o `slug` do post.
+O nome da pasta passa a ser o `slug` do post.
+
+Se o post tiver imagens, coloque tudo dentro da mesma pasta do artigo.
+
+### Gerando previews de imagens
+
+Para gerar versões mais leves das imagens de um post:
+
+```bash
+npm run images:preview -- "src/blogs-posts/11-04-2026-como-desenvolvi-o-qms"
+```
+
+Também pode personalizar largura, qualidade e sobrescrever previews antigas:
+
+```bash
+npm run images:preview -- "src/blogs-posts/11-04-2026-como-desenvolvi-o-qms" maxWidth=1600 quality=90 force
+```
+
+Uso recomendado no markdown:
+
+```md
+[![Legenda](./imagem-preview.jpg)](./imagem-original.png)
+```
 
 ## Notas de manutenção
 
