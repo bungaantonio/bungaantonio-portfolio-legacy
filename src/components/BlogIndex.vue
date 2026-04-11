@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto px-4">
+  <div class="container mx-auto px-4 component-spacing">
     <h1 class="text-title mb-6">Blog</h1>
 
     <!-- Se houver erro ao carregar os posts -->
@@ -120,8 +120,8 @@ export default {
 
 <style scoped>
 .loader {
-  border: 4px solid #f3f3f3;
-  border-top: 4px solid #3498db;
+  border: 4px solid theme('colors.secondary.200');
+  border-top: 4px solid theme('colors.primary.DEFAULT');
   border-radius: 50%;
   width: 30px;
   height: 30px;

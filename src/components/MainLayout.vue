@@ -1,7 +1,7 @@
 <template>
-    <div class="min-h-screen bg-accent flex flex-col">
+    <div class="min-h-screen bg-accent dark:bg-secondary-900 flex flex-col transition-colors duration-400">
         <TopBarComponent />
-        <div class="container mx-auto px-6 py-12 min-h-[600px] flex-grow">
+        <div class="container mx-auto px-6 py-12 min-h-[600px] flex-grow section-spacing">
             <slot />
         </div>
     </div>

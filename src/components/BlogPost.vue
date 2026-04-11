@@ -6,28 +6,31 @@
       </div>
 
       <!-- Post encontrado -->
-      <div v-else-if="postContent && post" class="card">
-        <div class="flex items-center justify-between mb-6">
-          <router-link to="/blog" class="link">
-            &larr; Voltar para o Blog
-          </router-link>
-          <span class="text-muted text-sm">Publicado em: {{ formatDate(post.date) }}</span>
+      <div v-else-if="postContent && post">
+        <ReadingProgress />
+        <div class="card">
+          <div class="flex items-center justify-between mb-6">
+            <router-link to="/blog" class="link">
+              &larr; Voltar para o Blog
+            </router-link>
+            <span class="text-muted text-sm">Publicado em: {{ formatDate(post.date) }}</span>
+          </div>
+  
+          <h1 class="text-title mb-4">{{ post.title }}</h1>
+          <p class="text-secondary dark:text-secondary-200 mb-4">{{ post.description }}</p>
+  
+          <div v-if="post.tags.length" class="mb-6">
+            <span v-for="tag in post.tags" :key="tag"
+              class="inline-block bg-secondary-200 dark:bg-secondary-700 rounded-full px-3 py-1 text-sm font-semibold text-secondary dark:text-secondary-200 mr-2 mb-2">
+              {{ tag }}
+            </span>
+          </div>
+  
+          <div ref="postContent" v-html="postContent" class="prose prose-slate dark:prose-invert max-w-none mb-8"></div>
+  
+          <!-- Navegação Próximo/Anterior -->
+          <NavigationLinks :previousPost="previousPost" :nextPost="nextPost" />
         </div>
-  
-        <h1 class="text-title mb-4">{{ post.title }}</h1>
-        <p class="text-secondary mb-4">{{ post.description }}</p>
-  
-        <div v-if="post.tags.length" class="mb-6">
-          <span v-for="tag in post.tags" :key="tag"
-            class="inline-block bg-accent rounded-full px-3 py-1 text-sm font-semibold text-secondary mr-2 mb-2">
-            {{ tag }}
-          </span>
-        </div>
-  
-        <div v-html="postContent" class="prose max-w-none mb-8"></div>
-  
-        <!-- Navegação Próximo/Anterior -->
-        <NavigationLinks :previousPost="previousPost" :nextPost="nextPost" />
       </div>
   
       <!-- Post não encontrado -->
@@ -49,10 +52,12 @@
   import { marked } from 'marked';
   import { sanitizeHtml } from '../services/sanitizeHtml';
   import NavigationLinks from './NavigationLinks.vue'; // Componente extraído para navegação
+import ReadingProgress from './ReadingProgress.vue';
   
   export default {
     components: {
       NavigationLinks,
+      ReadingProgress,
     },
     data() {
       return {
@@ -75,6 +80,11 @@
         },
         immediate: true,
       },
+      postContent() {
+        this.$nextTick(() => {
+          this.addCopyButtons();
+        });
+      },
     },
     methods: {
       async fetchPostsAndContent() {
@@ -87,7 +97,11 @@
           const post = await PostService.getPost(postId);
   
           if (post) {
-            this.postContent = sanitizeHtml(marked.parse(post.body));
+            const bodyWithCallouts = post.body.replace(/^>\s*\[(info|dica|aviso)\]\s*(.*)$/gim, (_, type, content) => {
+              const normalized = type.toLowerCase() === 'dica' ? 'info' : type.toLowerCase();
+              return `<blockquote class="callout callout-${normalized}">${content}</blockquote>`;
+            });
+            this.postContent = sanitizeHtml(marked.parse(bodyWithCallouts));
             this.post = post;
             this.setNavigationPosts(postId);
             this.updatePageMetadata(post);
@@ -125,7 +139,7 @@
           return;
         }
 
-        const defaultTitle = 'Bunga António @ Software Engineer | Back-End Engineer';
+        const defaultTitle = 'Bunga António @ Software & Systems Engineer';
         const defaultDescription = 'Bem-vindo ao portfólio de Bunga António, engenheiro de software e entusiasta de tecnologia, onde compartilho meus artigos e experiências.';
         const metaDescription = document.querySelector('meta[name="description"]');
 
@@ -134,6 +148,43 @@
         if (metaDescription) {
           metaDescription.setAttribute('content', post?.description || defaultDescription);
         }
+      },
+      addCopyButtons() {
+        const postContainer = this.$refs.postContent;
+        if (!postContainer) return;
+
+        const codeBlocks = postContainer.querySelectorAll('pre');
+        codeBlocks.forEach((pre) => {
+          if (pre.dataset.copyButtonAttached) return;
+          pre.dataset.copyButtonAttached = 'true';
+          pre.classList.add('code-copy-wrapper');
+
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.className = 'code-copy-btn';
+          button.textContent = 'Copy';
+          button.setAttribute('aria-label', 'Copiar código');
+
+          button.addEventListener('click', async () => {
+            const codeElement = pre.querySelector('code');
+            if (!codeElement) return;
+            try {
+              await navigator.clipboard.writeText(codeElement.innerText.trim());
+              button.textContent = 'Copiado!';
+              setTimeout(() => {
+                button.textContent = 'Copy';
+              }, 1500);
+            } catch (error) {
+              console.error('Erro ao copiar código:', error);
+              button.textContent = 'Erro';
+              setTimeout(() => {
+                button.textContent = 'Copy';
+              }, 1500);
+            }
+          });
+
+          pre.insertBefore(button, pre.firstChild);
+        });
       },
       formatDate(dateString) {
         return PostService.formatDate(dateString);

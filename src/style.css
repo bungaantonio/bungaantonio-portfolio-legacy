@@ -2,24 +2,162 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html {
+    @apply transition-colors duration-400;
+    /* Força scrollbar sempre visível para prevenir layout shift */
+    overflow-y: scroll;
+  }
+  body {
+    @apply bg-accent text-secondary dark:bg-secondary-900 dark:text-secondary-100;
+    /* Previne layout shift do scroll */
+    overflow-x: hidden;
+  }
+}
+
 @layer components {
   .card {
-    @apply bg-card-bg p-4 md:p-6 rounded-lg shadow hover:shadow-md transition duration-300;
+    @apply bg-card-bg dark:bg-card-bg-dark p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md active:shadow-lg transition-all duration-300 border border-secondary-200 dark:border-secondary-700;
   }
 
   .btn {
-    @apply px-4 py-2 bg-primary text-white rounded hover:bg-primary-hover transition duration-300;
+    @apply px-4 py-2 bg-primary text-white rounded hover:bg-primary-hover active:bg-primary-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-secondary-900 transition-all duration-200;
   }
 
   .link {
-    @apply text-primary hover:text-primary-hover hover:underline;
+    @apply text-primary hover:text-primary-hover active:text-primary-700 focus-visible:outline-none focus-visible:underline focus-visible:underline-offset-2 dark:text-primary-400 dark:hover:text-primary-300 dark:active:text-primary-200 transition-colors duration-200;
   }
 
   .text-title {
-    @apply text-3xl font-bold;
+    @apply text-3xl font-bold text-secondary dark:text-secondary-100;
   }
 
   .text-body {
-    @apply text-secondary;
+    @apply text-secondary dark:text-secondary-200;
+  }
+
+  /* Micro-interações adicionais */
+  .interactive {
+    @apply transition-all duration-200 ease-out;
+  }
+
+  .interactive:hover {
+    @apply transform scale-[1.02];
+  }
+
+  .interactive:active {
+    @apply transform scale-[0.98];
+  }
+
+  /* Ritmo vertical harmonioso */
+  .section-spacing {
+    @apply space-y-8 md:space-y-12 lg:space-y-16;
+  }
+
+  .component-spacing {
+    @apply space-y-4 md:space-y-6;
+  }
+
+  /* Prose dark mode */
+  .prose {
+    @apply text-secondary dark:text-secondary-100;
+  }
+  .prose p,
+  .prose li,
+  .prose strong,
+  .prose em,
+  .prose span,
+  .prose td,
+  .prose th {
+    @apply text-secondary dark:text-secondary-100;
+  }
+  .prose h1,
+  .prose h2,
+  .prose h3,
+  .prose h4,
+  .prose h5,
+  .prose h6 {
+    @apply text-secondary dark:text-secondary-100;
+  }
+  .prose h2,
+  .prose h3 {
+    @apply relative pl-5 border-l-4 border-primary/20 dark:border-primary/40 mb-4;
+  }
+  .prose h2::before,
+  .prose h3::before {
+    content: '';
+    position: absolute;
+    left: -0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 9999px;
+    background: currentColor;
+    opacity: 0.65;
+  }
+  .prose a {
+    @apply text-primary dark:text-primary-300 font-medium relative inline-flex items-center;
+  }
+  .prose a::after {
+    content: '';
+    @apply absolute left-0 -bottom-0.5 h-[2px] w-full bg-primary transition-all duration-200 opacity-40;
+  }
+  .prose a:hover::after {
+    @apply opacity-100;
+  }
+  .prose code {
+    @apply bg-secondary-100 dark:bg-secondary-800 text-secondary dark:text-secondary-100 px-1.5 py-0.5 rounded-md border border-secondary-200 dark:border-secondary-700;
+  }
+  .prose pre {
+    @apply bg-secondary-100 dark:bg-secondary-800 text-secondary dark:text-secondary-100 border border-secondary-200 dark:border-secondary-700 rounded-2xl overflow-x-auto relative shadow-sm;
+  }
+  .prose pre code {
+    @apply !bg-transparent !p-0 !border-0 !text-inherit;
+  }
+  .prose blockquote {
+    @apply border-secondary-300 dark:border-secondary-600 text-secondary dark:text-secondary-100 rounded-xl bg-secondary-50 dark:bg-secondary-900 p-4;
+  }
+  .prose hr {
+    @apply border-secondary-200 dark:border-secondary-700;
+  }
+  .prose table {
+    @apply w-full border-collapse border border-secondary-200 dark:border-secondary-700;
+  }
+  .prose th,
+  .prose td {
+    @apply border border-secondary-200 dark:border-secondary-700;
+  }
+  .prose img {
+    @apply rounded-2xl border border-secondary-200 dark:border-secondary-700 shadow-sm transition-transform duration-300 ease-out cursor-zoom-in;
+  }
+  .prose img:hover {
+    @apply scale-[1.02];
+  }
+  .code-copy-wrapper {
+    position: relative;
+  }
+  .code-copy-btn {
+    @apply absolute right-3 top-3 z-10 px-3 py-1.5 text-xs font-semibold rounded-full bg-white/90 text-secondary shadow-sm border border-secondary-200 transition-all duration-200 hover:bg-primary hover:text-white dark:bg-secondary-900/95 dark:text-secondary-100 dark:border-secondary-700;
+  }
+  .callout {
+    @apply rounded-2xl border-l-4 p-4 my-6;
+  }
+  .callout-info {
+    @apply border-primary/70 bg-primary/10 text-secondary dark:text-secondary-100;
+  }
+  .callout-aviso {
+    @apply border-yellow-400/90 bg-yellow-100 text-secondary dark:text-secondary-100;
+  }
+  .callout-info::before,
+  .callout-aviso::before {
+    @apply absolute left-4 top-4 text-lg font-bold;
+    content: '';
+  }
+  .callout-info::before {
+    content: 'ℹ️';
+  }
+  .callout-aviso::before {
+    content: '⚠️';
   }
 }
