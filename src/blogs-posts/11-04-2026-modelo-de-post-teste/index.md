@@ -85,6 +85,37 @@ export default {
 | `tags` | Ajuda a organizar os temas |
 | `date` | Ordena cronologicamente os artigos |
 
+## Exemplo de vídeo local
+
+Se o vídeo estiver na mesma pasta do post, podes usar HTML assim:
+
+<video controls preload="metadata">
+  <source src="./2025-10-24_104916.mp4" type="video/mp4" />
+  O teu navegador não suporta vídeo HTML5.
+</video>
+
+No exemplo acima, o vídeo está mesmo dentro desta pasta do post-modelo.
+
+```html
+<video controls preload="metadata" poster="./capa.jpg">
+  <source src="./2025-10-24_104916.mp4" type="video/mp4" />
+  O teu navegador não suporta vídeo HTML5.
+</video>
+```
+
+## Exemplo de embed externo
+
+Para YouTube ou Vimeo, podes embutir com `iframe`:
+
+```html
+<iframe
+  src="https://www.youtube.com/embed/VIDEO_ID"
+  title="Demo do projeto"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen
+></iframe>
+```
+
 ## Exemplo de conclusão
 
 Se este post estiver a aparecer corretamente, então já deves conseguir validar:
@@ -93,7 +124,8 @@ Se este post estiver a aparecer corretamente, então já deves conseguir validar
 - estilos de tipografia;
 - callouts;
 - tabelas;
-- blocos de código com botão de copiar;
+- vídeo local;
+- embed externo responsivo;
 - contraste no modo escuro.
 
 ## Modelo rápido para copiar

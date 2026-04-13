@@ -6,17 +6,17 @@
 
                     <!-- Coluna de Conteúdo -->
                     <section class="md:w-3/5">
-                        <h1 class="text-title mb-6">Bem-vindo ao meu portfólio.</h1>
+                        <h1 class="text-title mb-6">Bem-vindo. Aqui foco em sistemas, arquitetura e produção.</h1>
 
                         <p class="mb-4 text-body leading-relaxed">
-                            Atuo na intersecção entre desenvolvimento, operação e arquitetura. Minha prática é
-                            pautada pela <span class="text-secondary-900 dark:text-white font-medium">consistência em
-                                produção</span> e pela responsabilidade técnica em sistemas de elevado impacto.
+                            Tenho atuado na intersecção entre desenvolvimento, operação e arquitetura. Minha prática é
+                            pautada pela consistência em ambientes de produção e pela participação em atividades
+                            relacionadas a responsabilidade técnica em sistemas de elevado impacto.
                         </p>
 
                         <p class="text-body leading-relaxed mb-8">
                             Tenho interesse especial por sistemas organizacionais e de elevado fluxo, onde regras,
-                            integração e clareza operacional precisam funcionar em ambiente real.
+                            integração e clareza operacional precisam funcionar em ambientes reais, em evolução.
                         </p>
 
                         <!-- System Grid: Especialidades -->

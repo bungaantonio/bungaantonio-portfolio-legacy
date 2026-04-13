@@ -196,10 +196,56 @@ import ReadingProgress from './ReadingProgress.vue';
           image.setAttribute('decoding', 'async');
         });
 
+        container.querySelectorAll('video').forEach((video) => {
+          const src = video.getAttribute('src');
+          const poster = video.getAttribute('poster');
+
+          if (src) {
+            video.setAttribute('src', PostService.resolveAssetPath(post, src));
+          }
+
+          if (poster) {
+            video.setAttribute('poster', PostService.resolveAssetPath(post, poster));
+          }
+
+          if (!video.hasAttribute('controls')) {
+            video.setAttribute('controls', '');
+          }
+
+          if (!video.hasAttribute('preload')) {
+            video.setAttribute('preload', 'metadata');
+          }
+
+          video.classList.add('post-video');
+        });
+
+        container.querySelectorAll('video source').forEach((source) => {
+          const src = source.getAttribute('src');
+          if (!src) return;
+          source.setAttribute('src', PostService.resolveAssetPath(post, src));
+        });
+
         container.querySelectorAll('a').forEach((link) => {
           const href = link.getAttribute('href');
           if (!href) return;
           link.setAttribute('href', PostService.resolveAssetPath(post, href));
+        });
+
+        container.querySelectorAll('iframe').forEach((iframe) => {
+          iframe.classList.add('post-embed-frame');
+
+          if (!iframe.getAttribute('title')) {
+            iframe.setAttribute('title', 'Embedded video');
+          }
+
+          if (!iframe.getAttribute('loading')) {
+            iframe.setAttribute('loading', 'lazy');
+          }
+
+          const wrapper = document.createElement('div');
+          wrapper.className = 'post-embed';
+          iframe.parentNode?.insertBefore(wrapper, iframe);
+          wrapper.appendChild(iframe);
         });
 
         return container.innerHTML;

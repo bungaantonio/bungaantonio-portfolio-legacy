@@ -106,4 +106,55 @@ describe('BlogPost', () => {
         expect(lightboxImage.exists()).toBe(true);
         expect(lightboxImage.attributes('src')).toBe('/assets/qms-full.png');
     });
+
+    it('resolve videos locais e embeds externos no conteúdo do post', async () => {
+        PostService.resolveAssetPath.mockImplementation((_, path) => {
+            if (path.includes('demo.mp4')) {
+                return '/assets/demo.mp4';
+            }
+
+            return path;
+        });
+
+        PostService.loadPosts.mockResolvedValueOnce([
+            { id: 'video-post', title: 'Video Post' },
+        ]);
+        PostService.getPost.mockResolvedValueOnce({
+            id: 'video-post',
+            title: 'Video Post',
+            description: 'Conteúdo com vídeo',
+            date: '2026-04-11',
+            tags: ['video'],
+            body: `
+<video src="./demo.mp4" poster="./cover.jpg"></video>
+<iframe src="https://www.youtube.com/embed/example"></iframe>`,
+        });
+
+        const wrapper = mount(BlogPost, {
+            global: {
+                stubs: {
+                    NavigationLinks: true,
+                    RouterLink: true,
+                },
+                mocks: {
+                    $route: {
+                        params: { postId: 'video-post' },
+                    },
+                },
+            },
+        });
+
+        await new Promise((resolve) => setTimeout(resolve, 0));
+        await wrapper.vm.$nextTick();
+
+        const video = wrapper.find('video');
+        expect(video.exists()).toBe(true);
+        expect(video.attributes('src')).toBe('/assets/demo.mp4');
+        expect(video.attributes('controls')).toBeDefined();
+        expect(video.attributes('preload')).toBe('metadata');
+
+        const iframeWrapper = wrapper.find('.post-embed');
+        expect(iframeWrapper.exists()).toBe(true);
+        expect(wrapper.find('iframe').attributes('loading')).toBe('lazy');
+    });
 });

@@ -58,10 +58,12 @@ describe('PostService', () => {
         const service = new PostService(mockModules, {
             '../blogs-posts/newer-post/capa.png': '/assets/capa.png',
             '../blogs-posts/newer-post/imagem com espaco.png': '/assets/imagem-com-espaco.png',
+            '../blogs-posts/newer-post/demo.mp4': '/assets/demo.mp4',
         });
 
         expect(service.resolveAssetPath({ sourceDir: '../blogs-posts/newer-post' }, './capa.png')).toBe('/assets/capa.png');
         expect(service.resolveAssetPath({ sourceDir: '../blogs-posts/newer-post' }, '<./imagem%20com%20espaco.png>')).toBe('/assets/imagem-com-espaco.png');
+        expect(service.resolveAssetPath({ sourceDir: '../blogs-posts/newer-post' }, './demo.mp4')).toBe('/assets/demo.mp4');
         expect(service.resolveAssetPath({ sourceDir: '../blogs-posts/newer-post' }, 'https://example.com/image.png')).toBe('https://example.com/image.png');
     });
 });

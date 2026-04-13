@@ -5,7 +5,7 @@ const postModules = import.meta.glob('../blogs-posts/**/*.md', {
     import: 'default',
     eager: true,
 });
-const assetModules = import.meta.glob('../blogs-posts/**/*.{png,jpg,jpeg,gif,webp,avif,svg}', {
+const assetModules = import.meta.glob('../blogs-posts/**/*.{png,jpg,jpeg,gif,webp,avif,svg,mp4,webm,ogg}', {
     import: 'default',
     eager: true,
 });
