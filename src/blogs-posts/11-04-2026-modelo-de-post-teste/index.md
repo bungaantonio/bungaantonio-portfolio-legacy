@@ -5,6 +5,7 @@ tags: [modelo, teste, markdown, blog]
 date: 2026-04-11
 version: 1.0
 author: Bunga António
+draft: true
 ---
 
 > [info] Use este post como modelo base sempre que quiser publicar um novo artigo ou validar mudanças visuais no blog.

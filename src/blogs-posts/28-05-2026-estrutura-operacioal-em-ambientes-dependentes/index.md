@@ -1,12 +1,11 @@
 ---
-
 title: Estruturação operacional em ambientes dependentes de conhecimento tácito
 description: Registo de observações e medidas de padronização operacional em uma solução de gestão de filas multiagência, com foco em redução de dependência de conhecimento informal e melhoria da previsibilidade operacional.
 tags: [operacoes, engenharia-operacional, suporte, processos, documentacao]
 date: 2026-05-28
 version: 1.0
 author: Bunga António
----------------------
+---
 
 ## Contexto
 

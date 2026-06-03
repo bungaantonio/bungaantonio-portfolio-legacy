@@ -91,6 +91,7 @@ class PostService {
 
         const posts = Object.entries(this.modules)
             .map(([path, markdown]) => normalizePost(path, markdown))
+            .filter((post) => post.draft !== true && post.status !== 'draft' && post.published !== false)
             .sort((a, b) => new Date(b.date) - new Date(a.date));
 
         this.cachedPosts = posts;

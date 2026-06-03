@@ -54,6 +54,38 @@ describe('PostService', () => {
         await expect(service.getPost('missing-post')).resolves.toBeNull();
     });
 
+    it('filtra posts marcados como rascunho ou nao publicados', async () => {
+        const mockModulesWithDrafts = {
+            ...mockModules,
+            '../blogs-posts/draft-post/index.md': `---
+title: Draft Post
+draft: true
+date: 2025-02-01
+---
+Conteudo rascunho`,
+            '../blogs-posts/status-draft-post/index.md': `---
+title: Status Draft Post
+status: draft
+date: 2025-02-02
+---
+Conteudo rascunho status`,
+            '../blogs-posts/unpublished-post/index.md': `---
+title: Unpublished Post
+published: false
+date: 2025-02-03
+---
+Conteudo nao publicado`,
+        };
+
+        const service = new PostService(mockModulesWithDrafts);
+        const posts = await service.loadPosts();
+
+        expect(posts.map((post) => post.id)).toEqual(['newer-post', 'older-post']);
+        
+        // Assegura também que getPost retorne null para posts de rascunho filtrados
+        await expect(service.getPost('draft-post')).resolves.toBeNull();
+    });
+
     it('resolve assets relativos a partir da pasta do post', () => {
         const service = new PostService(mockModules, {
             '../blogs-posts/newer-post/capa.png': '/assets/capa.png',

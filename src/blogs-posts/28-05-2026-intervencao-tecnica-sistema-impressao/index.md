@@ -1,12 +1,11 @@
 ---
-
 title: Intervenção técnica em sistema de impressão com falhas de autenticação, rede e hardware
 description: Registo de intervenção técnica realizada em fevereiro de 2026 num ambiente de impressão corporativa, envolvendo falhas de autenticação, alterações de rede e ocorrência de erros no equipamento principal e alternativo.
 tags: [suporte, operacoes, documentacao, impressao]
 date: 2026-05-28
 version: 1.0
 author: Bunga António
----------------------
+---
 
 ## Contexto
 

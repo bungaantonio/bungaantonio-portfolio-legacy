@@ -3,6 +3,7 @@ title: Como se desenvolver na faculdade
 description: Como se desenvolver na faculdade. Dicas práticas para crescer como pessoa e como profissional.
 tags: [faculdade, estudo didático, vida universitária, desenvolvimento pessoal]
 date: 2025-03-03
+draft: true
 ---
 
 A faculdade é um dos períodos mais transformadores da vida. É quando começamos a construir quem seremos — como profissionais, mas também como pessoas. Muito além das provas e dos trabalhos, esse é um momento de autodescoberta, conexões e crescimento.
