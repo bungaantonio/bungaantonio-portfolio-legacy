@@ -1,7 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import BlogIndex from '../components/BlogIndex.vue';
 import BlogPost from '../components/BlogPost.vue';
-import Home from '../components/Home.vue'; // Importe o componente Home
+import Home from '../components/Home.vue';
+import PortfolioIndex from '../components/PortfolioIndex.vue';
+import PortfolioItem from '../components/PortfolioItem.vue';
 
 const routes = [
     {
@@ -27,6 +29,23 @@ const routes = [
         props: true,
         meta: {
             title: 'Post | Bunga António',
+        },
+    },
+    {
+        path: '/portfolio',
+        name: 'PortfolioIndex',
+        component: PortfolioIndex,
+        meta: {
+            title: 'Portfólio | Bunga António',
+        },
+    },
+    {
+        path: '/portfolio/:itemId',
+        name: 'PortfolioItem',
+        component: PortfolioItem,
+        props: true,
+        meta: {
+            title: 'Projeto | Bunga António',
         },
     },
 ];

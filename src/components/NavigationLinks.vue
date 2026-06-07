@@ -1,22 +1,22 @@
 <template>
-    <nav v-if="previousPost || nextPost" class="post-nav" aria-label="Navegação entre posts">
+    <nav v-if="previousPost || nextPost" class="post-nav" aria-label="Navegação entre entradas">
       <router-link 
         v-if="previousPost" 
-        :to="`/blog/${previousPost.id}`" 
+        :to="`${basePath}/${previousPost.id}`" 
         class="post-nav__card"
-        :aria-label="`Leia o post mais recente: ${previousPost.title}`"
+        :aria-label="`${previousLabel}: ${previousPost.title}`"
       >
-        <span class="post-nav__eyebrow">&larr; Mais recente</span>
+        <span class="post-nav__eyebrow">&larr; {{ previousLabel }}</span>
         <span class="post-nav__title">{{ previousPost.title }}</span>
       </router-link>
   
       <router-link 
         v-if="nextPost" 
-        :to="`/blog/${nextPost.id}`" 
+        :to="`${basePath}/${nextPost.id}`" 
         class="post-nav__card post-nav__card--align-right"
-        :aria-label="`Leia o post mais antigo: ${nextPost.title}`"
+        :aria-label="`${nextLabel}: ${nextPost.title}`"
       >
-        <span class="post-nav__eyebrow">Mais antigo &rarr;</span>
+        <span class="post-nav__eyebrow">{{ nextLabel }} &rarr;</span>
         <span class="post-nav__title">{{ nextPost.title }}</span>
       </router-link>
     </nav>
@@ -27,6 +27,18 @@
     props: {
       previousPost: Object,
       nextPost: Object,
+      basePath: {
+        type: String,
+        default: '/blog',
+      },
+      previousLabel: {
+        type: String,
+        default: 'Mais recente',
+      },
+      nextLabel: {
+        type: String,
+        default: 'Mais antigo',
+      },
     },
   };
   </script>

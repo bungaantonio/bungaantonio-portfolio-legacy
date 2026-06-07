@@ -13,6 +13,7 @@
             </div>
             <div class="hidden md:flex items-center space-x-4">
                 <router-link to="/" class="text-secondary dark:text-secondary-200 hover:text-primary dark:hover:text-primary-400 transition-colors duration-200" aria-label="Ir para a home">Home</router-link>
+                <router-link to="/portfolio" class="text-secondary dark:text-secondary-200 hover:text-primary dark:hover:text-primary-400 transition-colors duration-200" aria-label="Ir para o portfólio">Portfólio</router-link>
                 <router-link to="/blog" class="text-secondary dark:text-secondary-200 hover:text-primary dark:hover:text-primary-400 transition-colors duration-200" aria-label="Ir para o blog">Blog</router-link>
                 <button @click="toggleDarkMode" class="p-2 rounded-full hover:bg-secondary-100 dark:hover:bg-secondary-800 transition-colors duration-200" aria-label="Alternar modo escuro">
                     <svg v-if="!isDark" class="w-5 h-5 text-secondary dark:text-secondary-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -43,6 +44,7 @@
         <!-- Menu Responsivo -->
         <div v-if="menuOpen" id="mobile-nav" class="md:hidden bg-card-bg dark:bg-card-bg-dark shadow-md transition-all ease-in-out duration-300 border-t border-secondary-200 dark:border-secondary-700">
             <router-link to="/" class="block px-4 py-2 text-secondary dark:text-secondary-200 hover:text-primary dark:hover:text-primary-400 transition-colors duration-200" @click="closeMenu" aria-label="Ir para a home">Home</router-link>
+            <router-link to="/portfolio" class="block px-4 py-2 text-secondary dark:text-secondary-200 hover:text-primary dark:hover:text-primary-400 transition-colors duration-200" @click="closeMenu" aria-label="Ir para o portfólio">Portfólio</router-link>
             <router-link to="/blog" class="block px-4 py-2 text-secondary dark:text-secondary-200 hover:text-primary dark:hover:text-primary-400 transition-colors duration-200" @click="closeMenu" aria-label="Ir para o blog">Blog</router-link>
         </div>
     </header>
