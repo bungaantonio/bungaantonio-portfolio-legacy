@@ -4,35 +4,37 @@
             <div class="max-w-4xl mx-auto component-spacing">
                 <section class="intro flex flex-col md:flex-row items-start mt-12 gap-10">
 
-                    <!-- Coluna de Conteúdo -->
                     <section class="md:w-3/5">
-                        <h1 class="text-title mb-6">Bem-vindo. Aqui foco em sistemas, arquitetura e produção.</h1>
+                        <h1 class="text-title mb-6">Bem-vindo. Construo software orientado a sistemas e dados.</h1>
 
                         <p class="mb-4 text-body leading-relaxed">
-                            Tenho atuado na intersecção entre desenvolvimento, operação e arquitetura. Minha prática é
-                            pautada pela consistência em ambientes de produção e pela participação em atividades
-                            relacionadas a responsabilidade técnica em sistemas de elevado impacto.
+                            Sou engenheiro informático a consolidar experiência em desenvolvimento de software.
+                            Até aqui, trabalhei sobretudo no backend, bases de dados e integração de sistemas,
+                            em projectos académicos e um MVP interno. Este site regista essa evolução e cresce
+                            à medida que novos projectos entram em produção.
                         </p>
 
                         <p class="text-body leading-relaxed mb-8">
-                            Tenho interesse especial por sistemas organizacionais e de elevado fluxo, onde regras,
-                            integração e clareza operacional precisam funcionar em ambientes reais, em evolução.
+                            Tenho grande interesse no desenvolvimento de sistemas web, foco na integridade
+                            de dados e aplicação de boas práticas em PostgreSQL. Gosto de transformar
+                            necessidades concretas em código funcional e continuo a aprender com equipas
+                            e contextos reais.
                         </p>
 
-                        <!-- System Grid: Especialidades -->
                         <div class="mt-5">
+                            <h2 class="section-label mb-3">Áreas de interesse</h2>
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                <article v-for="item in domains" :key="item.title" class="system-grid__card group">
+                                <article v-for="item in domains" :key="item.title" class="system-grid__card">
                                     <h3 class="system-grid__card-title">{{ item.title }}</h3>
+                                    <p class="system-grid__card-desc">{{ item.description }}</p>
                                 </article>
                             </div>
                         </div>
                     </section>
 
-                    <!-- Coluna de Perfil -->
                     <aside class="photo md:w-2/5 w-full flex flex-col items-center md:items-end">
                         <div class="image-container relative">
-                            <img alt="Bunga António, engenheiro de software e sistemas" src="/bungaantonio-brand.jpeg"
+                            <img alt="Bunga António, engenheiro informático" src="/bungaantonio-brand.jpeg"
                                 class="rounded-lg shadow-lg border border-secondary-200 dark:border-secondary-700 object-cover"
                                 loading="lazy" width="400" height="400" />
                             <div class="profile-caption">
@@ -43,12 +45,22 @@
                     </aside>
                 </section>
 
-                <!-- Casos de Estudo em Destaque -->
+                <section class="mt-12">
+                    <h2 class="section-label mb-1">Tecnologias</h2>
+                    <p class="text-body text-sm mb-4 text-secondary-600 dark:text-secondary-400">As que uso com mais frequência neste momento.</p>
+                    <div class="tech-grid">
+                        <div v-for="group in technologies" :key="group.label" class="tech-grid__group">
+                            <h3 class="tech-grid__label">{{ group.label }}</h3>
+                            <p class="tech-grid__items">{{ group.items.join(', ') }}</p>
+                        </div>
+                    </div>
+                </section>
+
                 <section v-if="featuredProjects.length" class="mt-16">
                     <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-6">
                         <div>
                             <h2 class="text-xl font-bold text-secondary dark:text-secondary-100">Casos de estudo</h2>
-                            <p class="text-body mt-1">Problemas reais, decisões de arquitectura e resultados mensuráveis.</p>
+                            <p class="text-body mt-1">Os projectos documentados até agora. A lista actualiza-se conforme novos sistemas forem concluídos.</p>
                         </div>
                         <router-link to="/portfolio" class="link font-semibold text-sm">
                             Ver portfólio completo &rarr;
@@ -64,7 +76,7 @@
                             <div class="flex items-start justify-between gap-3 mb-3">
                                 <h3 class="featured-card__title">
                                     <router-link :to="`/portfolio/${project.id}`" class="link">
-                                        {{ project.title }}
+                                        {{ displayTitle(project) }}
                                     </router-link>
                                 </h3>
                                 <span
@@ -100,8 +112,11 @@
                     </div>
                 </section>
 
-                <!-- Footer / CTA -->
-                <div class="mt-16 pt-8 border-t border-accent dark:border-secondary-800 text-center">
+                <div class="mt-16 pt-8 border-t border-accent dark:border-secondary-800 text-center space-y-4">
+                    <p class="text-body text-base max-w-2xl mx-auto leading-relaxed">
+                        Engenheiro informático em crescimento, aberto a novos desafios em desenvolvimento
+                        de software e pronto para contribuir e aprender em equipas dinâmicas.
+                    </p>
                     <p class="text-body text-lg">
                         Explore os meus
                         <router-link to="/portfolio" class="link font-semibold mx-1">casos de estudo</router-link>,
@@ -124,13 +139,36 @@ import { onMounted, ref } from 'vue';
 import PortfolioService from '../services/PortfolioService';
 
 const domains = [
-    { title: 'IAM & Identidade' },
-    { title: 'Rastreabilidade & Auditoria' },
-    { title: 'Processos & Regras de Negócio' },
-    { title: 'Infra & Integração' },
+    {
+        title: 'Identidade & Acesso',
+        description: 'Autenticação (JWT) e isolamento de dados. Área em desenvolvimento contínuo nos meus projectos.',
+    },
+    {
+        title: 'Rastreabilidade',
+        description: 'Logs de auditoria e Hash Chaining. Prática iniciada no TFC, a aprofundar em novos sistemas.',
+    },
+    {
+        title: 'Desenvolvimento de Software',
+        description: 'Transformar necessidades de negócio em código funcional. Foco actual em MVPs e iteração.',
+    },
+    {
+        title: 'Integração',
+        description: 'Interligação de hardware (biometria) com sistemas web. Competência que quero expandir.',
+    },
+];
+
+const technologies = [
+    { label: 'Backend', items: ['Python (FastAPI)', 'Node.js (NestJS)', 'C#'] },
+    { label: 'Bases de Dados', items: ['PostgreSQL', 'MySQL'] },
+    { label: 'Frontend', items: ['React', 'HTMX', 'TailwindCSS'] },
+    { label: 'Ferramentas', items: ['Docker', 'Git'] },
 ];
 
 const featuredProjects = ref([]);
+
+function displayTitle(project) {
+    return project.shortTitle || project.title;
+}
 
 onMounted(async () => {
     try {
@@ -166,12 +204,36 @@ onMounted(async () => {
     @apply mt-1 text-[9px] uppercase tracking-[0.22em] text-white/60;
 }
 
+.section-label {
+    @apply text-sm font-bold uppercase tracking-wide text-secondary-600 dark:text-secondary-300;
+}
+
 .system-grid__card {
     @apply rounded-xl border border-secondary-200 bg-secondary-50/50 px-4 py-4 transition-all duration-300 ease-in-out hover:border-primary-400 hover:bg-white hover:shadow-md dark:border-secondary-700 dark:bg-secondary-800/50 dark:hover:border-primary-500 dark:hover:bg-secondary-800;
 }
 
 .system-grid__card-title {
-    @apply text-[13px] font-bold leading-tight uppercase tracking-wide text-secondary-700 dark:text-secondary-200;
+    @apply text-[13px] font-bold leading-tight text-secondary-700 dark:text-secondary-200;
+}
+
+.system-grid__card-desc {
+    @apply mt-2 text-xs leading-relaxed text-secondary-600 dark:text-secondary-400;
+}
+
+.tech-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 gap-3;
+}
+
+.tech-grid__group {
+    @apply rounded-xl border border-secondary-200 bg-card-bg px-4 py-3 dark:border-secondary-700 dark:bg-card-bg-dark;
+}
+
+.tech-grid__label {
+    @apply text-xs font-bold uppercase tracking-wide text-secondary-500 dark:text-secondary-400;
+}
+
+.tech-grid__items {
+    @apply mt-1 text-sm text-secondary-700 dark:text-secondary-200;
 }
 
 .featured-card {

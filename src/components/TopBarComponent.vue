@@ -6,9 +6,9 @@
                     <img src="/bungaantonio.jpg" alt="Bunga António"
                         class="w-12 h-12 rounded-full mx-auto border-4 border-primary shadow-md transition-transform duration-200 hover:scale-105" />
                 </router-link>
-                <div class="hidden md:flex flex-col">
-                    <span class="text-sm font-semibold text-secondary dark:text-secondary-100">Bunga António</span>
-                    <span class="text-xs text-muted dark:text-secondary-400">Software & Systems Engineer</span>
+                <div class="flex min-w-0 flex-col">
+                    <span class="truncate text-sm font-semibold text-secondary dark:text-secondary-100">Bunga António</span>
+                    <span class="truncate text-xs text-muted dark:text-secondary-400">Software & Systems Engineer</span>
                 </div>
             </div>
             <div class="hidden md:flex items-center space-x-4">

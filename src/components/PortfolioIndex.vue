@@ -2,7 +2,7 @@
   <div class="container mx-auto px-4 component-spacing">
     <h1 class="text-title mb-3">Portfólio</h1>
     <p class="text-body mb-8 max-w-2xl">
-      Casos de estudo com foco em arquitectura, concorrência e rastreabilidade em contextos reais.
+      Projectos documentados até ao momento. Novos casos de estudo são adicionados conforme evoluo.
     </p>
 
     <div v-if="hasError" class="text-center p-4">
@@ -43,7 +43,7 @@
               <router-link
                 :to="`/portfolio/${item.id}`"
                 class="link text-lg md:text-xl font-medium"
-                v-html="highlightText(item.title)"
+                v-html="highlightText(displayTitle(item))"
               />
               <span
                 v-if="item.category"
@@ -122,6 +122,7 @@ export default {
       return this.items.filter((item) => {
         const haystack = this.normalizeText([
           item.title,
+          item.shortTitle,
           item.description,
           item.excerpt,
           item.body,
@@ -174,6 +175,9 @@ export default {
       return category === 'academia'
         ? 'portfolio-badge--academia'
         : 'portfolio-badge--corporativo';
+    },
+    displayTitle(item) {
+      return item.shortTitle || item.title;
     },
     normalizeText(value = '') {
       return value
