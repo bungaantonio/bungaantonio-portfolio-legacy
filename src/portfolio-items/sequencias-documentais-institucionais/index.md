@@ -5,7 +5,7 @@ description: Aplicação web interna para geração, registo e controlo de corre
 category: corporativo
 stack: [NestJS, TypeScript, PostgreSQL, Prisma, HTMX, Handlebars, TailwindCSS, SMTP, Docker]
 tags: [SELECT FOR UPDATE, idempotência, auditoria, MVP, correspondência]
-date: 2025-09-15
+date: 2026-06-06
 featured: true
 ---
 
