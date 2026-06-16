@@ -12,13 +12,16 @@
           <router-link to="/portfolio" class="link">
             &larr; Voltar para o Portfólio
           </router-link>
-          <span
-            v-if="item.category"
-            class="portfolio-badge"
-            :class="categoryClass(item.category)"
-          >
-            {{ categoryLabel(item.category) }}
-          </span>
+          <div class="flex items-center gap-3">
+            <span v-if="item.formattedDate" class="text-muted text-sm">{{ item.formattedDate }}</span>
+            <span
+              v-if="item.category"
+              class="portfolio-badge"
+              :class="categoryClass(item.category)"
+            >
+              {{ categoryLabel(item.category) }}
+            </span>
+          </div>
         </div>
 
         <h1 class="text-title mb-4">{{ item.title }}</h1>
