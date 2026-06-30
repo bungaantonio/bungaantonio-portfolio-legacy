@@ -45,13 +45,16 @@
                 class="link text-lg md:text-xl font-medium"
                 v-html="highlightText(displayTitle(item))"
               />
-              <span
-                v-if="item.category"
-                class="portfolio-badge"
-                :class="categoryClass(item.category)"
-              >
-                {{ categoryLabel(item.category) }}
-              </span>
+              <div class="flex items-center gap-3">
+                <span v-if="item.formattedDate" class="text-muted text-sm">{{ item.formattedDate }}</span>
+                <span
+                  v-if="item.category"
+                  class="portfolio-badge"
+                  :class="categoryClass(item.category)"
+                >
+                  {{ categoryLabel(item.category) }}
+                </span>
+              </div>
             </div>
 
             <div v-if="item.stack.length" class="mb-3 flex flex-wrap gap-2">
