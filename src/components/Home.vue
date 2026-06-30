@@ -5,12 +5,12 @@
                 <section class="intro flex flex-col md:flex-row items-start mt-12 gap-10">
 
                     <section class="md:w-3/5">
-                        <h1 class="text-title mb-6">Bem-vindo. Estou a consolidar a minha trajetória em infraestrutura, sistemas e operação tecnológica.</h1>
+                        <h1 class="text-title mb-6">Bem-vindo. Estou a construir a minha trajetória em infraestrutura, sistemas e operação tecnológica.</h1>
 
                         <p class="mb-4 text-body leading-relaxed">
-                            Estou a construir a minha presença como <strong>IT Infrastructure Engineer</strong>, com foco em fortalecer uma base sólida em ambientes resilientes, 
-                            estáveis e seguros. A minha evolução segue em direção a <strong>IT Infrastructure & Systems Engineer</strong> e, a mais longo prazo, a 
-                            <strong>Infrastructure & Systems Engineer</strong>.
+                            Estou a iniciar a minha caminhada como <strong>IT Infrastructure Engineer</strong>, com foco em aprender, crescer e construir 
+                            uma base sólida em ambientes resilientes, estáveis e seguros. A minha direção de evolução passa por 
+                            <strong>IT Infrastructure & Systems Engineer</strong> e, a mais longo prazo, por <strong>Infrastructure & Systems Engineer</strong>.
                         </p>
 
                         <p class="text-body leading-relaxed mb-8">
@@ -112,8 +112,8 @@
 
                 <div class="mt-16 pt-8 border-t border-accent dark:border-secondary-800 text-center space-y-4">
                     <p class="text-body text-base max-w-2xl mx-auto leading-relaxed">
-                        Profissional em evolução em infraestruturas de TI, com foco em automação, resiliência, segurança operacional e estabilidade de serviços, 
-                        a aprofundar a minha presença no alinhamento entre infraestruturas e sistemas.
+                        Profissional em início de percurso em infraestruturas de TI, com foco em automação, resiliência, segurança operacional e estabilidade de serviços, 
+                        a aprofundar a minha evolução no alinhamento entre infraestruturas e sistemas.
                     </p>
                     <p class="text-body text-lg">
                         Explore os meus

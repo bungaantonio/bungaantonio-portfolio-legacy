@@ -8,7 +8,7 @@
                 </router-link>
                 <div class="flex min-w-0 flex-col">
                     <span class="truncate text-sm font-semibold text-secondary dark:text-secondary-100">Bunga António</span>
-                    <span class="truncate text-xs text-muted dark:text-secondary-400">Junior Advanced · IT Infrastructure</span>
+                    <span class="truncate text-xs text-muted dark:text-secondary-400">IT Infrastructure Engineer</span>
                 </div>
             </div>
             <div class="hidden md:flex items-center space-x-4">
