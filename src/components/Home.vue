@@ -44,8 +44,8 @@
                 </section>
 
                 <section class="mt-12">
-                    <h2 class="section-label mb-1">Tecnologias</h2>
-                    <p class="text-body text-sm mb-4 text-secondary-600 dark:text-secondary-400">As que uso com mais frequência neste momento.</p>
+                    <h2 class="section-label mb-1">Tecnologias e áreas de contacto</h2>
+                    <p class="text-body text-sm mb-4 text-secondary-600 dark:text-secondary-400">Áreas em que estou a ganhar experiência, aprender e consolidar a minha base técnica.</p>
                     <div class="tech-grid">
                         <div v-for="group in technologies" :key="group.label" class="tech-grid__group">
                             <h3 class="tech-grid__label">{{ group.label }}</h3>
@@ -156,10 +156,10 @@ const domains = [
 ];
 
 const technologies = [
-    { label: 'Virtualização & Cloud', items: ['Docker', 'VMware', 'Hyper-V', 'Azure'] },
-    { label: 'Redes & Segurança', items: ['TCP/IP', 'VLANs', 'Firewalls', 'SSH', 'Zero Trust'] },
-    { label: 'Automação & Operação', items: ['Linux', 'Windows Server', 'PowerShell', 'Bash', 'Ansible'] },
-    { label: 'Dados & Integração', items: ['PostgreSQL', 'Microsoft 365', 'Power Automate', 'APIs'] },
+    { label: 'Virtualização & Cloud', items: ['Docker', 'VMware', 'Hyper-V', 'Azure', 'estudo e contacto inicial'] },
+    { label: 'Redes & Segurança', items: ['TCP/IP', 'VLANs', 'Firewalls', 'SSH', 'base prática'] },
+    { label: 'Automação & Operação', items: ['Linux', 'Windows Server', 'PowerShell', 'Bash', 'aprendizagem contínua'] },
+    { label: 'Dados & Integração', items: ['PostgreSQL', 'Microsoft 365', 'Power Automate', 'APIs', 'exploração inicial'] },
 ];
 
 const profileImage = '/bungaantonio-brand.jpeg';
