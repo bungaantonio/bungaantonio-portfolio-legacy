@@ -24,7 +24,6 @@ describe('Home', () => {
         const text = wrapper.text();
 
         expect(text).toContain('IT Infrastructure Engineer');
-        expect(text).toContain('IT Infrastructure & Systems Engineer');
         expect(text).toContain('Infrastructure & Systems Engineer');
         expect(text).not.toContain('Desenvolvimento');
         expect(text).not.toContain('desenvolvimento');

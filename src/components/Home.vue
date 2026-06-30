@@ -5,18 +5,18 @@
                 <section class="intro flex flex-col md:flex-row items-start mt-12 gap-10">
 
                     <section class="md:w-3/5">
-                        <h1 class="text-title mb-6">Bem-vindo. Estou a construir a minha trajetória em infraestrutura, sistemas e operação tecnológica.</h1>
+                        <h1 class="text-title mb-6">Bem-vindo. Estou a construir a minha trajetória na área de infraestrutura, sistemas e operação tecnológica.</h1>
 
                         <p class="mb-4 text-body leading-relaxed">
-                            Estou a iniciar a minha caminhada como <strong>IT Infrastructure Engineer</strong>, com foco em aprender, crescer e construir 
-                            uma base sólida em ambientes resilientes, estáveis e seguros. A minha direção de evolução passa por 
-                            <strong>IT Infrastructure & Systems Engineer</strong> e, a mais longo prazo, por <strong>Infrastructure & Systems Engineer</strong>.
+                            Atualmente, estou a iniciar o percurso como <strong>IT Infrastructure Engineer</strong>, com foco em aprendizagem prática e consolidação de bases 
+                            em ambientes on-prem. Trabalho em troubleshooting e suporte operacional em infraestruturas de sistemas, com atenção à estabilidade, resolução de incidentes 
+                            e continuidade de serviço.
                         </p>
 
                         <p class="text-body leading-relaxed mb-8">
                             Tenho interesse especial em virtualização, automação de infraestruturas, administração de redes, segurança operacional, 
-                            fiabilidade de sistemas e integração entre infraestrutura e aplicações. Desenvolvo uma perspetiva prática, orientada à operação, 
-                            estabilidade, observabilidade e continuidade de serviço.
+                            fiabilidade de sistemas e integração entre infraestrutura e aplicações. Desenvolvo uma abordagem prática, orientada à operação, estabilidade, 
+                            observabilidade e continuidade de serviço.
                         </p>
 
                         <div class="mt-5">
@@ -44,7 +44,7 @@
                 </section>
 
                 <section class="mt-12">
-                    <h2 class="section-label mb-1">Tecnologias e áreas de contacto</h2>
+                    <h2 class="section-label mb-1">AMBIENTE TÉCNICO</h2>
                     <p class="text-body text-sm mb-4 text-secondary-600 dark:text-secondary-400">Áreas em que estou a ganhar experiência, aprender e consolidar a minha base técnica.</p>
                     <div class="tech-grid">
                         <div v-for="group in technologies" :key="group.label" class="tech-grid__group">
@@ -139,27 +139,27 @@ import PortfolioService from '../services/PortfolioService';
 const domains = [
     {
         title: 'Infraestrutura & Redes',
-        description: 'Desenho, monitorização e manutenção de ambientes físicos e cloud, com foco em conectividade, disponibilidade e resiliência.',
+        description: 'Desenho, operação e manutenção de ambientes físicos e cloud, com foco em conectividade, disponibilidade, resiliência e continuidade de serviço.',
     },
     {
         title: 'Segurança, IAM & Auditoria',
-        description: 'Gestão de acessos, controlo de identidade e rastreabilidade operacional para reforçar segurança e integridade dos ambientes.',
+        description: 'Gestão de identidades e acessos, controlo de permissões e rastreabilidade operacional para reforço de segurança e integridade dos sistemas.',
     },
     {
         title: 'Automação & Operação',
-        description: 'Implementação de automação operacional, procedimentos consistentes e fluxos de apoio à estabilidade e eficiência dos serviços.',
+        description: 'Automação de tarefas operacionais, padronização de procedimentos e suporte à estabilidade e eficiência dos serviços.',
     },
     {
-        title: 'Confiabilidade & Sistemas',
-        description: 'Apoio à fiabilidade de sistemas, integração entre camadas tecnológicas e melhoria contínua da experiência operacional.',
+        title: 'Sistemas & Confiabilidade',
+        description: 'Suporte à fiabilidade de sistemas, integração entre camadas tecnológicas e otimização contínua da operação.',
     },
 ];
 
 const technologies = [
-    { label: 'Virtualização & Cloud', items: ['Docker', 'VMware', 'Hyper-V', 'Azure', 'estudo e contacto inicial'] },
-    { label: 'Redes & Segurança', items: ['TCP/IP', 'VLANs', 'Firewalls', 'SSH', 'base prática'] },
-    { label: 'Automação & Operação', items: ['Linux', 'Windows Server', 'PowerShell', 'Bash', 'aprendizagem contínua'] },
-    { label: 'Dados & Integração', items: ['PostgreSQL', 'Microsoft 365', 'Power Automate', 'APIs', 'exploração inicial'] },
+    { label: 'Sistemas e Infraestrutura', items: ['Linux', 'Windows Server', 'Active Directory', 'TCP/IP', 'VLANs', 'SSH', 'troubleshooting de redes e sistemas'] },
+    { label: 'Virtualização & Cloud', items: ['Docker', 'VMware', 'Hyper-V'] },
+    { label: 'Automação e Operação', items: ['PowerShell', 'Bash', 'Power Automate'] },
+    { label: 'Dados e Integração', items: ['PostgreSQL', 'Microsoft 365', 'APIs'] },
 ];
 
 const profileImage = '/bungaantonio-brand.jpeg';
