@@ -28,7 +28,7 @@ describe('Home', () => {
         expect(text).toContain('Infrastructure & Systems Engineer');
         expect(text).not.toContain('Desenvolvimento');
         expect(text).not.toContain('desenvolvimento');
-        expect(text).toContain('Estou a construir a minha trajetória');
+        expect(text).toContain('Estou a consolidar a minha trajetória');
         expect(text).toContain('Infraestrutura & Redes');
         expect(text).toContain('Virtualização & Cloud');
         expect(text).toContain('Automação & Operação');
