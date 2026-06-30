@@ -19,16 +19,16 @@
 
 <script setup>
 const items = [
-    'System Integration',
+    'Infrastructure',
+    'Networking',
+    'Virtualisation',
+    'Automation',
     'IAM',
     'Audit Trails',
-    'Backend',
-    'Business Rules',
-    'Architecture',
-    'Infrastructure',
-    'Traceability',
     'Reliability',
     'Operations',
+    'System Integration',
+    'Security',
 ];
 
 const repeatedItems = [...items, ...items];

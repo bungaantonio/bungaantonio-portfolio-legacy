@@ -1,22 +1,22 @@
 ---
 title: O Primeiro Bit
 description: Um começo simples, mas intencional.
-tags: [spring boot, java, engenharia, primeiros passos]
+tags: [infraestrutura, sistemas, engenharia, primeiros-passos]
 date: 2025-03-03
 ---
 
 # O Primeiro Bit
 
-Começa aqui o meu blog técnico — direto ao ponto, sem rodeios.
+Começa aqui o meu blog técnico — directo ao ponto, sem rodeios.
 
-É só um `Hello World`, mas carrega propósito: compartilhar soluções reais, decisões técnicas com base, e aprendizados de engenharia sem firulas.
+É só um ponto de partida, mas carrega propósito: registar intervenções técnicas reais, decisões de arquitectura de sistemas e aprendizados de engenharia de infraestruturas sem firulas.
 
-## Stack
+## Foco
 
-- **Vue + Tailwind CSS**
-- Markdown, automatização e foco em conteúdo técnico relevante
+- **Redes, sistemas e infraestrutura**
+- Documentação técnica e operacional com base em contexto real
 
-Este espaço não vai girar em torno de tendências vazias, mas sim de **engenharia aplicada**, com senso crítico e testes reais.
+Este espaço não vai girar em torno de tendências vazias, mas sim de **engenharia aplicada a sistemas e infraestruturas**, com senso crítico e evidência real.
 
 ---
 

@@ -156,10 +156,10 @@ const domains = [
 ];
 
 const technologies = [
-    { label: 'Backend', items: ['Python (FastAPI)', 'Node.js (NestJS)', 'C#'] },
-    { label: 'Bases de Dados', items: ['PostgreSQL', 'MySQL'] },
-    { label: 'Frontend', items: ['React', 'HTMX', 'TailwindCSS'] },
-    { label: 'Ferramentas', items: ['Docker', 'Git'] },
+    { label: 'Infraestrutura & Virtualização', items: ['Docker', 'VMware', 'Hyper-V'] },
+    { label: 'Redes & Segurança', items: ['TCP/IP', 'VLANs', 'Firewalls', 'SSH'] },
+    { label: 'Sistemas & Automação', items: ['Linux', 'Windows Server', 'PowerShell', 'Bash'] },
+    { label: 'Dados & Integração', items: ['PostgreSQL', 'Microsoft 365', 'Power Automate'] },
 ];
 
 const featuredProjects = ref([]);

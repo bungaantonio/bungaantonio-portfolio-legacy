@@ -6,7 +6,7 @@
 [![Vue 3](https://img.shields.io/badge/Vue-3-42b883?style=for-the-badge&logo=vuedotjs&logoColor=white)](https://vuejs.org/)
 [![Deploy](https://img.shields.io/badge/deploy-Netlify-00c7b7?style=for-the-badge&logo=netlify&logoColor=white)](https://www.netlify.com/)
 
-Portfólio pessoal e blog técnico construído com Vue 3, Vite e Tailwind CSS. O site regista a minha evolução como engenheiro informático: casos de estudo, reflexões técnicas e projectos em crescimento.
+Portfólio pessoal e blog técnico construído com Vue 3, Vite e Tailwind CSS. O site regista a minha evolução como IT Infrastructure Engineer: casos de estudo, intervenções técnicas e reflexões operacionais em crescimento.
 
 **Live:** [bungaantonio.tech](https://www.bungaantonio.tech) · **Portfólio:** [/portfolio](https://www.bungaantonio.tech/portfolio) · **Blog:** [/blog](https://www.bungaantonio.tech/blog)
 
@@ -14,25 +14,25 @@ Portfólio pessoal e blog técnico construído com Vue 3, Vite e Tailwind CSS. O
 
 ## Perfil
 
-Construo software orientado a sistemas e dados. Sou engenheiro informático a consolidar experiência em desenvolvimento de software. Até aqui, trabalhei sobretudo no backend, bases de dados e integração de sistemas, em projectos académicos e um MVP interno.
+IT Infrastructure Engineer, focado na trajectória de crescimento para IT Infrastructure & Systems Engineer e, no longo prazo, Infrastructure & Systems Engineer. Trabalho com redes, sistemas, virtualização, automação operacional e ambientes corporativos Microsoft 365.
 
-Tenho grande interesse no desenvolvimento de sistemas web, foco na integridade de dados e aplicação de boas práticas em PostgreSQL. Gosto de transformar necessidades concretas em código funcional e continuo a aprender com equipas e contextos reais.
+Tenho particular interesse na fiabilidade e continuidade operacional de infraestruturas físicas e cloud, na automatização de processos internos e na integração de sistemas de forma segura e rastreável.
 
 ### Áreas de interesse
 
 | Área | Foco actual |
 |------|-------------|
-| **Identidade & Acesso** | Autenticação (JWT) e isolamento de dados |
-| **Rastreabilidade** | Logs de auditoria e Hash Chaining |
-| **Desenvolvimento de Software** | MVPs e iteração sobre regras de negócio |
-| **Integração** | Hardware (biometria) com sistemas web |
+| **Infraestrutura & Redes** | Administração de ambientes físicos e cloud, configuração de rede e segurança de acessos |
+| **Gestão de Identidade (IAM) & Auditoria** | Controlo de acesso por perfis, logs imutáveis e rastreabilidade operacional |
+| **Automação & Scripting** | PowerShell, Bash, Power Automate — redução de processos manuais em ambientes corporativos |
+| **Integração de Hardware & Sistemas** | Interligação de dispositivos físicos (biometria, impressão) com sistemas e APIs |
 
 ### Tecnologias (uso frequente)
 
-- **Backend:** Python (FastAPI), Node.js (NestJS), C#
-- **Bases de Dados:** PostgreSQL, MySQL
-- **Frontend:** React, HTMX, TailwindCSS
-- **Ferramentas:** Docker, Git
+- **Infraestrutura & Virtualização:** Docker, VMware, Hyper-V
+- **Redes & Segurança:** TCP/IP, VLANs, Firewalls, SSH
+- **Sistemas & Automação:** Linux, Windows Server, PowerShell, Bash
+- **Dados & Integração:** PostgreSQL, Microsoft 365, Power Automate
 
 ---
 
@@ -61,7 +61,7 @@ Este repositório aplica práticas de **renderização segura de conteúdo**:
 | **Como** | Vue 3 SPA, conteúdo em Markdown com front matter, deploy Netlify |
 | **Diferencial** | Casos de estudo com profundidade (concorrência PostgreSQL, auditoria, equidade algorítmica), não apenas lista de tecnologias |
 | **Estado** | Em evolução. Novos projectos são documentados à medida que são concluídos |
-| **Posicionamento** | Engenheiro informático em crescimento, bases sólidas, sede de aprender |
+| **Posicionamento** | IT Infrastructure Engineer em crescimento, bases sólidas em sistemas e redes, foco em operações e automação |
 
 ---
 
@@ -136,8 +136,8 @@ npm run images:preview -- "src/blogs-posts/<slug>"
 
 Projecto mantido de forma simples e pessoal: file-based content, testes nos fluxos críticos, sem over-engineering. O objectivo é um site operável, legível e honesto sobre o ponto da carreira em que estou.
 
-**Direcção:** sistemas compreensíveis, dados íntegros, código que responde a problemas reais.
+**Direcção:** infraestruturas fiáveis, operações estáveis, automatização que responde a problemas reais.
 
 ---
 
-Engenheiro informático em crescimento · [LinkedIn](https://www.linkedin.com/in/bungaantonio) · [bungaantonio.tech](https://www.bungaantonio.tech)
+IT Infrastructure Engineer · [LinkedIn](https://www.linkedin.com/in/bungaantonio) · [bungaantonio.tech](https://www.bungaantonio.tech)
