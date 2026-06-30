@@ -5,20 +5,18 @@
                 <section class="intro flex flex-col md:flex-row items-start mt-12 gap-10">
 
                     <section class="md:w-3/5">
-                        <h1 class="text-title mb-6">Bem-vindo. Construo software orientado a sistemas e dados.</h1>
+                        <h1 class="text-title mb-6">Bem-vindo. Foco-me na arquitetura, resiliência e automação de sistemas e infraestruturas.</h1>
 
                         <p class="mb-4 text-body leading-relaxed">
-                            Sou engenheiro informático a consolidar experiência em desenvolvimento de software.
-                            Até aqui, trabalhei sobretudo no backend, bases de dados e integração de sistemas,
-                            em projectos académicos e um MVP interno. Este site regista essa evolução e cresce
-                            à medida que novos projectos entram em produção.
+                            Sou engenheiro de infraestruturas de TI (<strong>IT Infrastructure Engineer</strong>), focando a minha carreira e 
+                            evolução contínua no sentido de me tornar <strong>IT Infrastructure & Systems Engineer</strong>, com a meta de longo prazo de me 
+                            consolidar como <strong>Infrastructure & Systems Engineer</strong>.
                         </p>
 
                         <p class="text-body leading-relaxed mb-8">
-                            Tenho grande interesse no desenvolvimento de sistemas web, foco na integridade
-                            de dados e aplicação de boas práticas em PostgreSQL. Gosto de transformar
-                            necessidades concretas em código funcional e continuo a aprender com equipas
-                            e contextos reais.
+                            Tenho grande interesse em virtualização, automação de infraestruturas, administração de redes, segurança e 
+                            integração contínua (CI/CD). Adicionalmente, foco-me na fiabilidade de sistemas operacionais, otimização de bases de dados (PostgreSQL) 
+                            e no alinhamento contínuo entre a estabilidade da infraestrutura e as necessidades das aplicações.
                         </p>
 
                         <div class="mt-5">
@@ -114,8 +112,8 @@
 
                 <div class="mt-16 pt-8 border-t border-accent dark:border-secondary-800 text-center space-y-4">
                     <p class="text-body text-base max-w-2xl mx-auto leading-relaxed">
-                        Engenheiro informático em crescimento, aberto a novos desafios em desenvolvimento
-                        de software e pronto para contribuir e aprender em equipas dinâmicas.
+                        Engenheiro de infraestruturas de TI focado em automação, resiliência e estabilidade operacional, 
+                        pronto para desenhar ambientes seguros e progredir no alinhamento de infraestruturas e sistemas.
                     </p>
                     <p class="text-body text-lg">
                         Explore os meus
@@ -140,20 +138,20 @@ import PortfolioService from '../services/PortfolioService';
 
 const domains = [
     {
-        title: 'Identidade & Acesso',
-        description: 'Autenticação (JWT) e isolamento de dados. Área em desenvolvimento contínuo nos meus projectos.',
+        title: 'Infraestrutura & Redes',
+        description: 'Desenho, monitorização e manutenção de ambientes físicos e cloud, segurança de acessos e resiliência de serviços.',
     },
     {
-        title: 'Rastreabilidade',
-        description: 'Logs de auditoria e Hash Chaining. Prática iniciada no TFC, a aprofundar em novos sistemas.',
+        title: 'Gestão de Identidade (IAM) & Auditoria',
+        description: 'Implementação de RLS, controle de acesso e logs imutáveis estruturados para garantia de integridade operacional.',
     },
     {
-        title: 'Desenvolvimento de Software',
-        description: 'Transformar necessidades de negócio em código funcional. Foco actual em MVPs e iteração.',
+        title: 'Automação & Scripting',
+        description: 'Desenvolvimento de scripts de suporte, APIs leves e tarefas programadas para otimização e operação de sistemas.',
     },
     {
-        title: 'Integração',
-        description: 'Interligação de hardware (biometria) com sistemas web. Competência que quero expandir.',
+        title: 'Integração de Hardware & Sistemas',
+        description: 'Interligação em tempo real de hardware biométrico nativo com interfaces e APIs através de middleware resiliente.',
     },
 ];
 

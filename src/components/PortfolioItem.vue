@@ -192,8 +192,8 @@ export default {
         return;
       }
 
-      const defaultTitle = 'Bunga António @ Software & System Engineer';
-      const defaultDescription = 'Bem-vindo ao portfólio de Bunga António, engenheiro de software e entusiasta de tecnologia, onde compartilho meus artigos e experiências.';
+      const defaultTitle = 'Bunga António @ IT Infrastructure Engineer';
+      const defaultDescription = 'Bem-vindo ao portfólio de Bunga António, engenheiro de infraestruturas de TI (IT Infrastructure Engineer), onde partilho as minhas experiências e artigos técnicos.';
       const metaDescription = document.querySelector('meta[name="description"]');
 
       document.title = item ? `${item.title} | Bunga António` : defaultTitle;

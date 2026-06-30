@@ -62,7 +62,7 @@ const router = createRouter({
     },
 });
 
-const defaultTitle = 'Bunga António @ Software & System Engineer';
+const defaultTitle = 'Bunga António @ IT Infrastructure Engineer';
 router.afterEach((to) => {
     if (typeof document !== 'undefined') {
         document.title = to.meta.title || defaultTitle;
