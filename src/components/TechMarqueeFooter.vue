@@ -21,7 +21,7 @@
 const items = [
     'Infrastructure',
     'Networking',
-    'Virtualisation',
+    'Virtualization',
     'Automation',
     'IAM',
     'Audit Trails',
