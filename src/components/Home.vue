@@ -8,15 +8,15 @@
                         <h1 class="text-title mb-6">Bem-vindo. Foco-me na arquitetura, resiliência e automação de sistemas e infraestruturas.</h1>
 
                         <p class="mb-4 text-body leading-relaxed">
-                            Sou engenheiro de infraestruturas de TI (<strong>IT Infrastructure Engineer</strong>), focando a minha carreira e 
-                            evolução contínua no sentido de me tornar <strong>IT Infrastructure & Systems Engineer</strong>, com a meta de longo prazo de me 
-                            consolidar como <strong>Infrastructure & Systems Engineer</strong>.
+                            Sou <strong>IT Infrastructure Engineer</strong>, com foco na construção de ambientes resilientes, estáveis e seguros, 
+                            e na evolução contínua para <strong>IT Infrastructure & Systems Engineer</strong>, com visão de longo prazo para 
+                            <strong>Infrastructure & Systems Engineer</strong>.
                         </p>
 
                         <p class="text-body leading-relaxed mb-8">
-                            Tenho grande interesse em virtualização, automação de infraestruturas, administração de redes, segurança e 
-                            integração contínua (CI/CD). Adicionalmente, foco-me na fiabilidade de sistemas operacionais, otimização de bases de dados (PostgreSQL) 
-                            e no alinhamento contínuo entre a estabilidade da infraestrutura e as necessidades das aplicações.
+                            Tenho interesse especial em virtualização, automação de infraestruturas, administração de redes, segurança operacional, 
+                            fiabilidade de sistemas e integração entre infraestrutura e aplicações. Trabalho com uma perspetiva orientada à operação, 
+                            estabilidade, observabilidade e continuidade de serviço.
                         </p>
 
                         <div class="mt-5">
@@ -32,7 +32,7 @@
 
                     <aside class="photo md:w-2/5 w-full flex flex-col items-center md:items-end">
                         <div class="image-container relative">
-                            <img alt="Bunga António, engenheiro informático" src="/bungaantonio-brand.jpeg"
+                            <img alt="Bunga António, engenheiro informático" :src="profileImage"
                                 class="rounded-lg shadow-lg border border-secondary-200 dark:border-secondary-700 object-cover"
                                 loading="lazy" width="400" height="400" />
                             <div class="profile-caption">
@@ -112,8 +112,8 @@
 
                 <div class="mt-16 pt-8 border-t border-accent dark:border-secondary-800 text-center space-y-4">
                     <p class="text-body text-base max-w-2xl mx-auto leading-relaxed">
-                        Engenheiro de infraestruturas de TI focado em automação, resiliência e estabilidade operacional, 
-                        pronto para desenhar ambientes seguros e progredir no alinhamento de infraestruturas e sistemas.
+                        Engenheiro de infraestruturas de TI focado em automação, resiliência, segurança operacional e estabilidade de serviços, 
+                        pronto para evoluir no alinhamento entre infraestruturas e sistemas.
                     </p>
                     <p class="text-body text-lg">
                         Explore os meus
@@ -146,8 +146,8 @@ const domains = [
         description: 'Implementação de RLS, controle de acesso e logs imutáveis estruturados para garantia de integridade operacional.',
     },
     {
-        title: 'Automação & Scripting',
-        description: 'Desenvolvimento de scripts de suporte, APIs leves e tarefas programadas para otimização e operação de sistemas.',
+        title: 'Automação & Operação',
+        description: 'Implementação de automação operacional, procedimentos confiáveis e fluxos de apoio à estabilidade e eficiência dos ambientes.',
     },
     {
         title: 'Integração de Hardware & Sistemas',
@@ -158,9 +158,11 @@ const domains = [
 const technologies = [
     { label: 'Infraestrutura & Virtualização', items: ['Docker', 'VMware', 'Hyper-V'] },
     { label: 'Redes & Segurança', items: ['TCP/IP', 'VLANs', 'Firewalls', 'SSH'] },
-    { label: 'Sistemas & Automação', items: ['Linux', 'Windows Server', 'PowerShell', 'Bash'] },
+    { label: 'Sistemas & Automação', items: ['Linux', 'Windows Server', 'PowerShell', 'Bash', 'Ansible'] },
     { label: 'Dados & Integração', items: ['PostgreSQL', 'Microsoft 365', 'Power Automate'] },
 ];
+
+const profileImage = '/bungaantonio-brand.jpeg';
 
 const featuredProjects = ref([]);
 
