@@ -171,7 +171,7 @@ import ReadingProgress from './ReadingProgress.vue';
         }
 
         const defaultTitle = 'Bunga António @ IT Infrastructure Engineer';
-        const defaultDescription = 'Bem-vindo ao portfólio de Bunga António, engenheiro de infraestruturas de TI (IT Infrastructure Engineer), onde partilho as minhas experiências e artigos técnicos.';
+        const defaultDescription = 'Bem-vindo ao portfólio de Bunga António, profissional em evolução em infraestruturas de TI, onde partilho as minhas experiências e artigos técnicos.';
         const metaDescription = document.querySelector('meta[name="description"]');
 
         document.title = post ? `${post.title} | Bunga António` : defaultTitle;

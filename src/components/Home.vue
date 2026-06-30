@@ -5,18 +5,18 @@
                 <section class="intro flex flex-col md:flex-row items-start mt-12 gap-10">
 
                     <section class="md:w-3/5">
-                        <h1 class="text-title mb-6">Bem-vindo. Foco-me na arquitetura, resiliência e automação de sistemas e infraestruturas.</h1>
+                        <h1 class="text-title mb-6">Bem-vindo. Estou a construir a minha trajetória em infraestrutura, sistemas e operação tecnológica.</h1>
 
                         <p class="mb-4 text-body leading-relaxed">
-                            Sou <strong>IT Infrastructure Engineer</strong>, com foco na construção de ambientes resilientes, estáveis e seguros, 
-                            e na evolução contínua para <strong>IT Infrastructure & Systems Engineer</strong>, com visão de longo prazo para 
-                            <strong>Infrastructure & Systems Engineer</strong>.
+                            Estou a iniciar a minha caminhada como <strong>IT Infrastructure Engineer</strong>, com foco em aprender, crescer e construir 
+                            uma base sólida em ambientes resilientes, estáveis e seguros. A minha direção de evolução passa por 
+                            <strong>IT Infrastructure & Systems Engineer</strong> e, a mais longo prazo, por <strong>Infrastructure & Systems Engineer</strong>.
                         </p>
 
                         <p class="text-body leading-relaxed mb-8">
                             Tenho interesse especial em virtualização, automação de infraestruturas, administração de redes, segurança operacional, 
-                            fiabilidade de sistemas e integração entre infraestrutura e aplicações. Trabalho com uma perspetiva orientada à operação, 
-                            estabilidade, observabilidade e continuidade de serviço.
+                            fiabilidade de sistemas e integração entre infraestrutura e aplicações. Estou a desenvolver uma perspetiva prática e orientada 
+                            à operação, estabilidade, observabilidade e continuidade de serviço.
                         </p>
 
                         <div class="mt-5">
@@ -112,8 +112,8 @@
 
                 <div class="mt-16 pt-8 border-t border-accent dark:border-secondary-800 text-center space-y-4">
                     <p class="text-body text-base max-w-2xl mx-auto leading-relaxed">
-                        Engenheiro de infraestruturas de TI focado em automação, resiliência, segurança operacional e estabilidade de serviços, 
-                        pronto para evoluir no alinhamento entre infraestruturas e sistemas.
+                        Profissional em início de percurso em infraestruturas de TI, com foco em automação, resiliência, segurança operacional e estabilidade de serviços, 
+                        a aprofundar a minha evolução no alinhamento entre infraestruturas e sistemas.
                     </p>
                     <p class="text-body text-lg">
                         Explore os meus
