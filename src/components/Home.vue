@@ -139,27 +139,27 @@ import PortfolioService from '../services/PortfolioService';
 const domains = [
     {
         title: 'Infraestrutura & Redes',
-        description: 'Desenho, monitorização e manutenção de ambientes físicos e cloud, segurança de acessos e resiliência de serviços.',
+        description: 'Desenho, monitorização e manutenção de ambientes físicos e cloud, com foco em conectividade, disponibilidade e resiliência.',
     },
     {
-        title: 'Gestão de Identidade (IAM) & Auditoria',
-        description: 'Implementação de RLS, controle de acesso e logs imutáveis estruturados para garantia de integridade operacional.',
+        title: 'Segurança, IAM & Auditoria',
+        description: 'Gestão de acessos, controlo de identidade e rastreabilidade operacional para reforçar segurança e integridade dos ambientes.',
     },
     {
         title: 'Automação & Operação',
-        description: 'Implementação de automação operacional, procedimentos confiáveis e fluxos de apoio à estabilidade e eficiência dos ambientes.',
+        description: 'Implementação de automação operacional, procedimentos consistentes e fluxos de apoio à estabilidade e eficiência dos serviços.',
     },
     {
-        title: 'Integração de Hardware & Sistemas',
-        description: 'Interligação em tempo real de hardware biométrico nativo com interfaces e APIs através de middleware resiliente.',
+        title: 'Confiabilidade & Sistemas',
+        description: 'Apoio à fiabilidade de sistemas, integração entre camadas tecnológicas e melhoria contínua da experiência operacional.',
     },
 ];
 
 const technologies = [
-    { label: 'Infraestrutura & Virtualização', items: ['Docker', 'VMware', 'Hyper-V'] },
-    { label: 'Redes & Segurança', items: ['TCP/IP', 'VLANs', 'Firewalls', 'SSH'] },
-    { label: 'Sistemas & Automação', items: ['Linux', 'Windows Server', 'PowerShell', 'Bash', 'Ansible'] },
-    { label: 'Dados & Integração', items: ['PostgreSQL', 'Microsoft 365', 'Power Automate'] },
+    { label: 'Virtualização & Cloud', items: ['Docker', 'VMware', 'Hyper-V', 'Azure'] },
+    { label: 'Redes & Segurança', items: ['TCP/IP', 'VLANs', 'Firewalls', 'SSH', 'Zero Trust'] },
+    { label: 'Automação & Operação', items: ['Linux', 'Windows Server', 'PowerShell', 'Bash', 'Ansible'] },
+    { label: 'Dados & Integração', items: ['PostgreSQL', 'Microsoft 365', 'Power Automate', 'APIs'] },
 ];
 
 const profileImage = '/bungaantonio-brand.jpeg';

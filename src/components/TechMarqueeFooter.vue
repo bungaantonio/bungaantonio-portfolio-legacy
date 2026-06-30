@@ -27,7 +27,7 @@ const items = [
     'Audit Trails',
     'Reliability',
     'Operations',
-    'System Integration',
+    'Cloud',
     'Security',
 ];
 
